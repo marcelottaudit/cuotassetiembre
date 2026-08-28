@@ -495,6 +495,28 @@
     font-size:11px;
     color:var(--ink-soft);
   }
+
+  /* ---------- STORE SEARCH (home) ---------- */
+  .store-hit{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:11px 13px;
+    cursor:pointer;
+    margin-bottom:8px;
+    transition:border-color .12s ease, transform .12s ease;
+  }
+  .store-hit:hover{border-color:var(--ink); transform:translateY(-1px);}
+  .store-hit-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+  .store-hit-name{font-family:'Oswald',sans-serif; font-weight:600; font-size:15px; text-transform:uppercase;}
+  .store-hit-meta{font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  .store-hit-months{display:flex; gap:5px; margin-top:8px;}
+  .store-hit-month{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px; font-weight:700;
+    padding:2px 8px; border-radius:10px;
+    background:var(--paper); border:1px solid var(--line); color:var(--ink-soft);
+  }
 </style>
 <body>
 
@@ -640,6 +662,20 @@
         <input type="text" id="promoterSearch" placeholder="Ej. Bruno, Sheila, Willgerson…" autocomplete="off">
       </div>
     </div>
+  </div>
+
+  <div class="search-block" style="margin-top:10px;">
+    <div class="search-box">
+      <div class="search-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="3" y="9" width="18" height="12" rx="1"/><path d="M3 9l2-5h14l2 5"/></svg>
+        Busca una tienda (en cualquier mes)
+      </div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="storeSearchHome" placeholder="Ej. Josegranda, Lacurva, La Fonda…" autocomplete="off">
+      </div>
+    </div>
+    <div id="storeSearchHomeResults" style="display:none; margin-top:10px;"></div>
   </div>
 
   <div id="promoterView">
@@ -841,6 +877,63 @@ document.getElementById('promoterSearch').addEventListener('input', e=>{
   renderPromoterGrid(e.target.value);
 });
 
+// ---------- store search (home) ----------
+const MES_ORDER = ['SETIEMBRE','AGOSTO','JULIO'];
+const storeIndex = {}; // key: tienda|promotor -> {tienda, promotor, cadena, categoria, meses:Set}
+RAW_ALL.forEach(r=>{
+  if(!r.promotor || r.promotor === 'SIN PROMOTOR' || !r.tienda) return;
+  const key = r.tienda.toLowerCase() + '|' + r.promotor;
+  if(!storeIndex[key]){
+    storeIndex[key] = { tienda:r.tienda, promotor:r.promotor, cadena:r.cadena, distrito:r.distrito, categoria:r.categoria, meses:new Set() };
+  }
+  storeIndex[key].meses.add(r.mes);
+});
+const storeIndexList = Object.values(storeIndex);
+
+function goToStore(promotor, tiendaLower){
+  const meses = storeIndex[tiendaLower.toLowerCase()+'|'+promotor].meses;
+  const bestMes = MES_ORDER.find(m=>meses.has(m));
+  openPromoter(promotor);
+  currentMes = bestMes;
+  renderMonthTabs();
+  renderDetailSummary();
+  const tiendaName = storeIndex[tiendaLower.toLowerCase()+'|'+promotor].tienda;
+  document.getElementById('storeSearch').value = tiendaName;
+  renderStoreList(tiendaName);
+}
+
+function renderStoreSearchHome(query){
+  const box = document.getElementById('storeSearchHomeResults');
+  const q = (query||'').trim().toLowerCase();
+  if(q.length < 2){
+    box.style.display = 'none';
+    box.innerHTML = '';
+    return;
+  }
+  const hits = storeIndexList.filter(s => s.tienda.toLowerCase().includes(q)).slice(0, 20);
+  box.style.display = 'block';
+  if(hits.length === 0){
+    box.innerHTML = '<div class="no-results">No se encontró ninguna tienda con ese nombre.</div>';
+    return;
+  }
+  box.innerHTML = hits.map(s=>{
+    const mesesHtml = MES_ORDER.filter(m=>s.meses.has(m)).map(m=>`<span class="store-hit-month">${MES_META[m].label}</span>`).join('');
+    return `<div class="store-hit" onclick="goToStore('${s.promotor.replace(/'/g,"\\'")}','${s.tienda.replace(/'/g,"\\'")}')">
+      <div class="store-hit-top">
+        <div>
+          <div class="store-hit-name">${s.tienda}</div>
+          <div class="store-hit-meta">${s.distrito||''} · ${s.cadena} · ${s.categoria} · Promotor: <b>${s.promotor}</b></div>
+        </div>
+      </div>
+      <div class="store-hit-months">${mesesHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('storeSearchHome').addEventListener('input', e=>{
+  renderStoreSearchHome(e.target.value);
+});
+
 // ---------- detail view ----------
 let currentPromoter = null;
 let currentMes = 'SETIEMBRE';
@@ -973,6 +1066,8 @@ function showConectados(){
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('rulesBlock').style.display = 'block';
   document.getElementById('layoutsView').style.display = 'none';
+  document.getElementById('storeSearchHome').value = '';
+  document.getElementById('storeSearchHomeResults').style.display = 'none';
   setHeader('conectados');
   window.scrollTo({top:0, behavior:'smooth'});
 }
