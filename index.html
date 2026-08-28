@@ -8,11 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F4F2EC;
+    --paper:#F5F6F8;
     --paper-raised:#FFFFFF;
-    --ink:#1E1C18;
-    --ink-soft:#5C574C;
-    --line:#DAD4C4;
+    --ink:#0B2D5B;
+    --ink-soft:#5A6B85;
+    --line:#D8DEE8;
     --tambo:#0E7C6B;
     --tambo-soft:#E3F3EF;
     --ava:#A02B2B;
@@ -23,11 +23,11 @@
     --vuse-soft:#F1E7F5;
     --fmc:#C9691E;
     --fmc-soft:#FBEBDB;
-    --gold:#B8862C;
+    --gold:#C9A227;
     --gold-soft:#FBF1DC;
     --win:#1E8A4C;
     --win-soft:#E4F4EA;
-    --shadow: 0 1px 2px rgba(30,28,24,0.06), 0 6px 20px -8px rgba(30,28,24,0.18);
+    --shadow: 0 1px 2px rgba(11,45,91,0.06), 0 6px 20px -8px rgba(11,45,91,0.18);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -57,7 +57,7 @@
     content:"";
     position:absolute; inset:0;
     background:
-      repeating-linear-gradient(135deg, rgba(244,242,236,0.035) 0px, rgba(244,242,236,0.035) 2px, transparent 2px, transparent 14px);
+      repeating-linear-gradient(135deg, rgba(245,246,248,0.035) 0px, rgba(245,246,248,0.035) 2px, transparent 2px, transparent 14px);
     pointer-events:none;
   }
   .top-inner{max-width:920px;margin:0 auto;position:relative;}
@@ -66,7 +66,7 @@
     font-size:11px;
     letter-spacing:.14em;
     text-transform:uppercase;
-    color:#C9C2AE;
+    color:#9FB6D9;
     display:flex; align-items:center; gap:8px;
   }
   .eyebrow .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;}
@@ -79,11 +79,11 @@
     margin:6px 0 4px;
     line-height:1.02;
   }
-  .sub{color:#DAD4C1; font-size:14.5px; max-width:520px; line-height:1.5;}
+  .sub{color:#C7D4E8; font-size:14.5px; max-width:520px; line-height:1.5;}
   .stat-row{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
   .stat-chip{
-    background:rgba(244,242,236,0.08);
-    border:1px solid rgba(244,242,236,0.16);
+    background:rgba(245,246,248,0.08);
+    border:1px solid rgba(245,246,248,0.16);
     border-radius:8px;
     padding:8px 12px;
     font-family:'JetBrains Mono',monospace;
@@ -144,7 +144,7 @@
   .promoter-card{
     background:var(--paper-raised);
     border:1px solid var(--line);
-    border-left:4px solid var(--ink);
+    border-left:4px solid var(--gold);
     border-radius:10px;
     padding:13px 14px;
     cursor:pointer;
@@ -177,6 +177,8 @@
   }
   .chain-dot.tambo{background:var(--tambo-soft); color:var(--tambo);}
   .chain-dot.ava{background:var(--ava-soft); color:var(--ava);}
+  .chain-dot.oxxo{background:var(--ava-soft); color:var(--ava);}
+  .chain-dot.primax{background:var(--velo-soft); color:var(--velo);}
   .no-results{color:var(--ink-soft); font-size:14px; padding:20px 4px;}
 
   /* ---------- DETAIL VIEW ---------- */
@@ -271,11 +273,11 @@
     display:flex; align-items:center; gap:8px;
   }
   .rules h2 .gold{color:var(--gold);}
-  .rules .rsub{font-size:12.5px; color:#C9C2AE; margin-bottom:16px;}
+  .rules .rsub{font-size:12.5px; color:#9FB6D9; margin-bottom:16px;}
   .rule-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px;}
   .rule-card{
-    background:rgba(244,242,236,0.06);
-    border:1px solid rgba(244,242,236,0.14);
+    background:rgba(245,246,248,0.06);
+    border:1px solid rgba(245,246,248,0.14);
     border-radius:10px;
     padding:13px 14px;
   }
@@ -304,7 +306,7 @@
     position:fixed; inset:0; z-index:999;
     background:var(--ink);
     background-image:
-      repeating-linear-gradient(135deg, rgba(244,242,236,0.035) 0px, rgba(244,242,236,0.035) 2px, transparent 2px, transparent 14px);
+      repeating-linear-gradient(135deg, rgba(245,246,248,0.035) 0px, rgba(245,246,248,0.035) 2px, transparent 2px, transparent 14px);
     display:flex; align-items:center; justify-content:center;
     padding:20px;
   }
@@ -341,7 +343,7 @@
     font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase;
     padding:12px; border-radius:8px; cursor:pointer;
   }
-  #gateBtn:hover{background:#332F28;}
+  #gateBtn:hover{background:#0E3A70;}
   #gateError{color:var(--ava); font-size:12px; margin-top:10px; font-family:'JetBrains Mono',monospace; display:none;}
 
   /* ---------- MONTH TABS ---------- */
@@ -415,7 +417,7 @@
     text-align:left;
     background:var(--paper-raised);
     border:1px solid var(--line);
-    border-left:4px solid var(--ink);
+    border-left:4px solid var(--gold);
     border-radius:12px;
     padding:22px 20px;
     box-shadow:var(--shadow);
