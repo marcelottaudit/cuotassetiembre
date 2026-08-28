@@ -402,6 +402,53 @@
     padding:3px 10px; border-radius:20px;
     white-space:nowrap;
   }
+
+  /* ---------- HOME MENU ---------- */
+  #homeView{margin-top:22px;}
+  .home-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    gap:14px;
+  }
+  .home-card{
+    display:block;
+    text-align:left;
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-left:4px solid var(--ink);
+    border-radius:12px;
+    padding:22px 20px;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    text-decoration:none;
+    color:inherit;
+    font-family:inherit;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .home-card:hover{transform:translateY(-2px);}
+  .home-card-icon{
+    width:46px; height:46px;
+    border-radius:10px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .home-card-title{
+    font-family:'Oswald',sans-serif;
+    font-weight:700;
+    font-size:19px;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .home-card-desc{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
 </style>
 <body>
 
@@ -423,12 +470,38 @@
 <header class="top">
   <div class="top-inner">
     <div class="eyebrow"><span class="dot"></span>TT AUDIT · BAT PERÚ</div>
-    <h1>Conectados KA</h1>
-    <div class="sub">Julio, Agosto y Setiembre 2026 — consulta tu avance de cuota por tienda, mes a mes.</div>
+    <h1 id="mainTitle">Portal de Promotores</h1>
+    <div class="sub" id="mainSub">Elige qué quieres consultar.</div>
   </div>
 </header>
 
 <div class="wrap">
+
+  <div id="homeView">
+    <div class="home-grid">
+      <button class="home-card" onclick="showConectados()">
+        <div class="home-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div class="home-card-title">Conectados</div>
+        <div class="home-card-desc">Consulta tu avance de cuota por tienda, mes a mes.</div>
+      </button>
+
+      <a class="home-card" href="presentacion-setiembre.pdf" target="_blank" rel="noopener">
+        <div class="home-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <div class="home-card-title">Presentación Setiembre BAT</div>
+        <div class="home-card-desc">Rol del promotor, portafolio, dinámicas de Conectados y materiales de convivencia.</div>
+      </a>
+    </div>
+  </div>
+
+  <div id="conectadosHome" style="display:none;">
+  <button class="back-btn" onclick="showHome()" style="padding-left:0; margin-bottom:6px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="12" height="12"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Menú principal
+  </button>
   <div class="search-block">
     <div class="search-box">
       <div class="search-label">
@@ -445,6 +518,7 @@
   <div id="promoterView">
     <div class="grid-label"><span>Selecciona tu nombre</span><span id="promoterCount"></span></div>
     <div class="promoter-grid" id="promoterGrid"></div>
+  </div>
   </div>
 
   <div id="detailView">
@@ -735,6 +809,32 @@ function renderDetailSummary(){
   `;
 }
 
+const HEADER_TEXT = {
+  home: { title:'Portal de Promotores', sub:'Elige qué quieres consultar.' },
+  conectados: { title:'Conectados KA', sub:'Julio, Agosto y Setiembre 2026 — consulta tu avance de cuota por tienda, mes a mes.' },
+};
+function setHeader(key){
+  document.getElementById('mainTitle').textContent = HEADER_TEXT[key].title;
+  document.getElementById('mainSub').textContent = HEADER_TEXT[key].sub;
+}
+
+function showHome(){
+  document.getElementById('homeView').style.display = 'block';
+  document.getElementById('conectadosHome').style.display = 'none';
+  document.getElementById('detailView').style.display = 'none';
+  setHeader('home');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function showConectados(){
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('conectadosHome').style.display = 'block';
+  document.getElementById('promoterView').style.display = 'block';
+  document.getElementById('detailView').style.display = 'none';
+  setHeader('conectados');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
 function openPromoter(name){
   currentPromoter = name;
   currentMes = promoterMap[name]['SETIEMBRE'].length > 0 ? 'SETIEMBRE'
@@ -747,8 +847,11 @@ function openPromoter(name){
   document.getElementById('storeSearch').value = '';
   renderStoreList('');
 
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('conectadosHome').style.display = 'block';
   document.getElementById('promoterView').style.display = 'none';
   document.getElementById('detailView').style.display = 'block';
+  setHeader('conectados');
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -774,6 +877,7 @@ document.getElementById('storeSearch').addEventListener('input', e=>{
 
 function showPromoterView(){
   document.getElementById('detailView').style.display = 'none';
+  document.getElementById('conectadosHome').style.display = 'block';
   document.getElementById('promoterView').style.display = 'block';
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -785,7 +889,9 @@ function logout(){
   document.getElementById('gatePass').value = '';
   document.getElementById('gateError').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
-  document.getElementById('promoterView').style.display = 'block';
+  document.getElementById('conectadosHome').style.display = 'none';
+  document.getElementById('homeView').style.display = 'block';
+  setHeader('home');
   document.getElementById('gate').classList.remove('hidden');
   document.getElementById('gateUser').focus();
 }
