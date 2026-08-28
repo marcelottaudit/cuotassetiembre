@@ -546,7 +546,7 @@
     <div class="store-list" id="storeList"></div>
   </div>
 
-  <div class="rules">
+  <div class="rules" id="rulesBlock" style="display:none;">
     <h2><span class="gold">★</span> Premios vigentes — Setiembre</h2>
     <div class="rsub">Ganan las tiendas con mayor % de avance dentro de cada categoría — no es por cuota cumplida, es por ranking. (Julio y Agosto se consultan en las pestañas de mes de tu perfil, con sus propios resultados.)</div>
     <div class="rule-grid">
@@ -822,6 +822,7 @@ function showHome(){
   document.getElementById('homeView').style.display = 'block';
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
+  document.getElementById('rulesBlock').style.display = 'none';
   setHeader('home');
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -831,6 +832,7 @@ function showConectados(){
   document.getElementById('conectadosHome').style.display = 'block';
   document.getElementById('promoterView').style.display = 'block';
   document.getElementById('detailView').style.display = 'none';
+  document.getElementById('rulesBlock').style.display = 'block';
   setHeader('conectados');
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -851,6 +853,7 @@ function openPromoter(name){
   document.getElementById('conectadosHome').style.display = 'block';
   document.getElementById('promoterView').style.display = 'none';
   document.getElementById('detailView').style.display = 'block';
+  document.getElementById('rulesBlock').style.display = 'block';
   setHeader('conectados');
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -891,6 +894,7 @@ function logout(){
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('homeView').style.display = 'block';
+  document.getElementById('rulesBlock').style.display = 'none';
   setHeader('home');
   document.getElementById('gate').classList.remove('hidden');
   document.getElementById('gateUser').focus();
