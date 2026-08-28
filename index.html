@@ -449,6 +449,52 @@
     color:var(--ink-soft);
     line-height:1.5;
   }
+
+  /* ---------- LAYOUT LINKS ---------- */
+  .layout-section{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .layout-section-title{
+    font-family:'Oswald',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:10px;
+    padding-bottom:8px;
+    border-bottom:1px solid var(--line);
+  }
+  .layout-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .layout-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:7px 14px;
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--ink);
+    text-decoration:none;
+    transition:background .12s ease, border-color .12s ease;
+  }
+  .layout-link:hover{background:var(--tambo-soft); border-color:var(--tambo);}
+  .layout-link::before{
+    content:"⬈";
+    font-size:11px;
+    color:var(--ink-soft);
+  }
 </style>
 <body>
 
@@ -494,6 +540,79 @@
         <div class="home-card-title">Presentación Setiembre BAT</div>
         <div class="home-card-desc">Rol del promotor, portafolio, dinámicas de Conectados y materiales de convivencia.</div>
       </a>
+
+      <button class="home-card" onclick="showLayouts()">
+        <div class="home-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="7" width="7" height="14" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/></svg>
+        </div>
+        <div class="home-card-title">Layout de Cadenas</div>
+        <div class="home-card-desc">Planogramas y layouts de exhibición por cadena: Tambo, Ava, Primax, Repsol, OXXO y Velo.</div>
+      </button>
+    </div>
+  </div>
+
+  <div id="layoutsView" style="display:none;">
+    <button class="back-btn" onclick="showHome()" style="padding-left:0; margin-bottom:14px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="12" height="12"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Menú principal
+    </button>
+    <div class="grid-label"><span>Layout de Cadenas</span></div>
+
+    <div class="layout-section">
+      <div class="layout-section-title">TAMBO</div>
+      <div class="layout-links">
+        <a class="layout-link" href="layouts/tambo.pdf" target="_blank" rel="noopener">Layout Tambo — Julio 2026</a>
+      </div>
+    </div>
+
+    <div class="layout-section">
+      <div class="layout-section-title">AVA</div>
+      <div class="layout-links">
+        <a class="layout-link" href="layouts/ava.pdf" target="_blank" rel="noopener">Layout Ava — Julio 2026</a>
+      </div>
+    </div>
+
+    <div class="layout-section">
+      <div class="layout-section-title">PRIMAX</div>
+      <div class="layout-links">
+        <a class="layout-link" href="layouts/primax.pdf" target="_blank" rel="noopener">Layout Primax — Abril 2026</a>
+      </div>
+    </div>
+
+    <div class="layout-section">
+      <div class="layout-section-title">REPSOL</div>
+      <div class="layout-links">
+        <a class="layout-link" href="layouts/repsol.pdf" target="_blank" rel="noopener">Layout Repsol — Abril 2026</a>
+      </div>
+    </div>
+
+    <div class="layout-section">
+      <div class="layout-section-title">OXXO — Junio 2026</div>
+      <div class="layout-links">
+        <a class="layout-link" href="layouts/oxxo-2cuerpos-no8mg.pdf" target="_blank" rel="noopener">Cigarrera 2 Cuerpos (sin 8MG)</a>
+        <a class="layout-link" href="layouts/oxxo-2cuerpos-8mg.pdf" target="_blank" rel="noopener">Cigarrera 2 Cuerpos (con 8MG)</a>
+        <a class="layout-link" href="layouts/oxxo-3cuerpos-no8mg.pdf" target="_blank" rel="noopener">Cigarrera 3 Cuerpos (sin 8MG)</a>
+        <a class="layout-link" href="layouts/oxxo-3cuerpos-8mg.pdf" target="_blank" rel="noopener">Cigarrera 3 Cuerpos (con 8MG)</a>
+        <a class="layout-link" href="layouts/oxxo-4cuerpos-8mg.pdf" target="_blank" rel="noopener">Cigarrera 4 Cuerpos (con 8MG)</a>
+        <a class="layout-link" href="layouts/oxxo-aeropuerto.pdf" target="_blank" rel="noopener">Cigarrera Aeropuerto</a>
+      </div>
+    </div>
+
+    <div class="layout-section">
+      <div class="layout-section-title">VELO — Cigarreras Lumus</div>
+      <div class="layout-links">
+        <a class="layout-link" href="layouts/lumus-simples-4-6mg.pdf" target="_blank" rel="noopener">Simples (4MG, 6MG)</a>
+        <a class="layout-link" href="layouts/lumus-simples-4-6-8mg-agosto.pdf" target="_blank" rel="noopener">Simples (4MG, 6MG, 8MG) — Agosto</a>
+        <a class="layout-link" href="layouts/lumus-dobles-4-6mg.pdf" target="_blank" rel="noopener">Dobles (4MG, 6MG)</a>
+        <a class="layout-link" href="layouts/lumus-dobles-4-6-8mg-agosto.pdf" target="_blank" rel="noopener">Dobles (4MG, 6MG, 8MG) — Agosto</a>
+      </div>
+    </div>
+
+    <div class="layout-section">
+      <div class="layout-section-title">POS INDEPENDIENTES</div>
+      <div class="layout-links">
+        <a class="layout-link" href="layouts/independientes.pdf" target="_blank" rel="noopener">Layout POS Independientes — Enero 2026</a>
+      </div>
     </div>
   </div>
 
@@ -812,6 +931,7 @@ function renderDetailSummary(){
 const HEADER_TEXT = {
   home: { title:'Portal de Promotores', sub:'Elige qué quieres consultar.' },
   conectados: { title:'Conectados KA', sub:'Julio, Agosto y Setiembre 2026 — consulta tu avance de cuota por tienda, mes a mes.' },
+  layouts: { title:'Layout de Cadenas', sub:'Planogramas y layouts de exhibición vigentes por cadena.' },
 };
 function setHeader(key){
   document.getElementById('mainTitle').textContent = HEADER_TEXT[key].title;
@@ -823,7 +943,18 @@ function showHome(){
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('rulesBlock').style.display = 'none';
+  document.getElementById('layoutsView').style.display = 'none';
   setHeader('home');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function showLayouts(){
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('conectadosHome').style.display = 'none';
+  document.getElementById('detailView').style.display = 'none';
+  document.getElementById('rulesBlock').style.display = 'none';
+  document.getElementById('layoutsView').style.display = 'block';
+  setHeader('layouts');
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -833,6 +964,7 @@ function showConectados(){
   document.getElementById('promoterView').style.display = 'block';
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('rulesBlock').style.display = 'block';
+  document.getElementById('layoutsView').style.display = 'none';
   setHeader('conectados');
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -854,6 +986,7 @@ function openPromoter(name){
   document.getElementById('promoterView').style.display = 'none';
   document.getElementById('detailView').style.display = 'block';
   document.getElementById('rulesBlock').style.display = 'block';
+  document.getElementById('layoutsView').style.display = 'none';
   setHeader('conectados');
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -893,6 +1026,7 @@ function logout(){
   document.getElementById('gateError').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('conectadosHome').style.display = 'none';
+  document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('homeView').style.display = 'block';
   document.getElementById('rulesBlock').style.display = 'none';
   setHeader('home');
