@@ -743,7 +743,34 @@
 
 <script>
 // ---------- password gate ----------
-const SITE_PASSWORD = 'conectados2026';
+const PASSWORD_MAP = {
+  "BRUNO GUTIERREZ": "47733071",
+  "CARLOS CLAVO": "42778314",
+  "CECILIA GUERRERO": "18100786",
+  "CESAR ORTEGA": "15635282",
+  "EDWARD RODRIGUEZ": "75899670",
+  "EMMELINE PEREYRA": "41836165",
+  "FERNANDO VEREAU": "conectados2026",
+  "FLAVIO TRIGOSO": "42988532",
+  "GIANFRANCO AREVALO": "47592774",
+  "JAIDE RAMIREZ": "60860162",
+  "JENNY VALLADARES": "41015189",
+  "JOSE BENDEZÚ": "42905884",
+  "JOSELYN CHINININ": "61076299",
+  "JUAN CASTILLO": "conectados2026",
+  "JUAN ROSAS": "conectados2026",
+  "KELLY BAZAN": "conectados2026",
+  "KIARA PANDURO": "60964190",
+  "MAURICIO PACHECO": "29609703",
+  "RENATO BRICEÑO": "conectados2026",
+  "SANDRA VILLAFANA": "42595517",
+  "SARAI AZO": "46133850",
+  "SHEILA CASANOVA": "41498478",
+  "SINTHIA IZAGUIRRE": "75848424",
+  "STEPHANY APUMAYTA": "43099870",
+  "WILLGERSON PAJITA": "75321881",
+  "YUBICSA ANGELES": "conectados2026"
+};
 const USER_MAP = {
   "BRUNO GUTIERREZ": "bgutierrez@ttaudit.com",
   "CARLOS CLAVO": "cclavo@ttaudit.com",
@@ -777,7 +804,7 @@ function tryUnlock(){
   const userVal = document.getElementById('gateUser').value.trim().toLowerCase();
   const passVal = document.getElementById('gatePass').value.trim();
   const matchedName = USER_MAP[userVal];
-  if(matchedName && passVal === SITE_PASSWORD){
+  if(matchedName && passVal === PASSWORD_MAP[matchedName]){
     sessionStorage.setItem('ck_unlocked', '1');
     sessionStorage.setItem('ck_promotor', matchedName);
     document.getElementById('gate').classList.add('hidden');
@@ -1143,10 +1170,6 @@ if(sessionStorage.getItem('ck_unlocked') === '1'){
     openPromoter(savedName);
   }
 }
-
-// ---------- SEGURIDAD DESACTIVADA TEMPORALMENTE (a pedido de Gabriel, 27/08) ----------
-// Para reactivar el login, borra o comenta este bloque.
-document.getElementById('gate').classList.add('hidden');
 </script>
 </body>
 </html>
