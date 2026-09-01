@@ -800,10 +800,13 @@ const USER_MAP = {
   "YUBICSA ANGELES": "yangeles@ttaudit.com"
 };
 
+const EMAIL_TO_NAME = {};
+for(const name in USER_MAP){ EMAIL_TO_NAME[USER_MAP[name].toLowerCase()] = name; }
+
 function tryUnlock(){
   const userVal = document.getElementById('gateUser').value.trim().toLowerCase();
   const passVal = document.getElementById('gatePass').value.trim();
-  const matchedName = USER_MAP[userVal];
+  const matchedName = EMAIL_TO_NAME[userVal];
   if(matchedName && passVal === PASSWORD_MAP[matchedName]){
     sessionStorage.setItem('ck_unlocked', '1');
     sessionStorage.setItem('ck_promotor', matchedName);
