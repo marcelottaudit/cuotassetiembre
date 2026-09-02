@@ -1124,10 +1124,23 @@ function openPromoter(name){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+const CATEGORIA_ORDER_AGOSTO = { 'VELO': 0, 'VUSE': 1, 'PM CAPS': 2, 'FMC': 2 };
+function sortRowsAgosto(rows){
+  return [...rows].sort((a,b) => {
+    const ca = CATEGORIA_ORDER_AGOSTO[a.categoria] ?? 99;
+    const cb = CATEGORIA_ORDER_AGOSTO[b.categoria] ?? 99;
+    if(ca !== cb) return ca - cb;
+    return (b.pct||0) - (a.pct||0);
+  });
+}
+
 function renderStoreList(filter){
   const f = (filter||'').trim().toLowerCase();
   const allRows = promoterMap[currentPromoter][currentMes];
-  const rows = allRows.filter(r=> (r.tienda+' '+r.distrito).toLowerCase().includes(f));
+  let rows = allRows.filter(r=> (r.tienda+' '+r.distrito).toLowerCase().includes(f));
+  if(currentMes === 'AGOSTO'){
+    rows = sortRowsAgosto(rows);
+  }
   const list = document.getElementById('storeList');
   if(allRows.length === 0){
     list.innerHTML = `<div class="no-results">Este promotor no tiene tiendas registradas en ${MES_META[currentMes].label}.</div>`;
