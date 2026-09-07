@@ -1292,7 +1292,7 @@ function matStoreCardHtml(r){
   return `<div class="mat-store-card" data-search="${(r.tienda+' '+r.distrito).toLowerCase()}">
     <div class="mat-store-top">
       <div>
-        <div class="mat-store-name">${r.tienda}</div>
+        <div class="mat-store-name">${r.cadena} - ${r.tienda}</div>
         <div class="mat-store-district">${r.distrito}${provinciaTxt}</div>
       </div>
       <span class="mat-visit-tag">${r.dia} · ${r.frecuencia}</span>
