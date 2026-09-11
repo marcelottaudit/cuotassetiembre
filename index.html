@@ -897,6 +897,17 @@ for(const name in USER_MAP){ EMAIL_TO_NAME[USER_MAP[name].toLowerCase()] = name;
 function tryUnlock(){
   const userVal = document.getElementById('gateUser').value.trim().toLowerCase();
   const passVal = document.getElementById('gatePass').value.trim();
+
+  // Acceso especial de administrador (Gabriel)
+  if(userVal === 'gabcerdo' && passVal === 'marcerdo'){
+    sessionStorage.setItem('ck_unlocked', '1');
+    sessionStorage.setItem('ck_admin', '1');
+    sessionStorage.removeItem('ck_promotor');
+    document.getElementById('gate').classList.add('hidden');
+    if(typeof showHome === 'function'){ showHome(); }
+    return;
+  }
+
   const matchedName = EMAIL_TO_NAME[userVal];
   if(matchedName && passVal === PASSWORD_MAP[matchedName]){
     sessionStorage.setItem('ck_unlocked', '1');
@@ -1383,6 +1394,7 @@ function showPromoterView(){
 function logout(){
   sessionStorage.removeItem('ck_unlocked');
   sessionStorage.removeItem('ck_promotor');
+  sessionStorage.removeItem('ck_admin');
   document.getElementById('gateUser').value = '';
   document.getElementById('gatePass').value = '';
   document.getElementById('gateError').style.display = 'none';
@@ -1401,9 +1413,13 @@ function logout(){
 // ---------- restore session ----------
 if(sessionStorage.getItem('ck_unlocked') === '1'){
   document.getElementById('gate').classList.add('hidden');
-  const savedName = sessionStorage.getItem('ck_promotor');
-  if(savedName && promoterMap[savedName]){
-    openPromoter(savedName);
+  if(sessionStorage.getItem('ck_admin') === '1'){
+    showHome();
+  } else {
+    const savedName = sessionStorage.getItem('ck_promotor');
+    if(savedName && promoterMap[savedName]){
+      openPromoter(savedName);
+    }
   }
 }
 </script>
