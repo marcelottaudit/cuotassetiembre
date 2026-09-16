@@ -554,49 +554,6 @@
     background:var(--paper); border:1px solid var(--line); color:var(--ink-soft);
   }
 
-  /* ---------- TOPS (admin) ---------- */
-  .tops-section{
-    background:var(--paper-raised);
-    border:1px solid var(--line);
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    margin-bottom:16px;
-    overflow:hidden;
-  }
-  .tops-header{
-    padding:14px 16px;
-    background:var(--ink);
-    color:#fff;
-  }
-  .tops-header-title{font-family:'Oswald',sans-serif; font-weight:700; font-size:16px; text-transform:uppercase;}
-  .tops-header-sub{font-size:11.5px; color:#C7D4E8; margin-top:2px;}
-  .tops-overall{
-    display:flex;
-    gap:16px;
-    padding:12px 16px;
-    background:var(--paper);
-    border-bottom:1px solid var(--line);
-  }
-  .tops-overall-stat{flex:1;}
-  .tops-overall-num{font-family:'Oswald',sans-serif; font-weight:700; font-size:20px; color:var(--ink);}
-  .tops-overall-label{font-size:10.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em;}
-  .tops-bar-track{height:8px; border-radius:5px; background:var(--paper); border:1px solid var(--line); overflow:hidden; margin:0 16px 14px;}
-  .tops-bar-fill{height:100%; background:var(--gold);}
-  .tops-row{
-    display:flex; align-items:center; gap:10px;
-    padding:9px 16px;
-    border-top:1px solid var(--line);
-    font-size:12.5px;
-  }
-  .tops-rank{
-    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:11px;
-    width:22px; text-align:center; color:var(--ink-soft); flex-shrink:0;
-  }
-  .tops-rank.top3{color:var(--gold);}
-  .tops-store{flex:1; min-width:0;}
-  .tops-store-name{font-family:'Oswald',sans-serif; font-weight:600; font-size:12.5px; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .tops-store-prom{font-size:10.5px; color:var(--ink-soft);}
-  .tops-pct{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12.5px; color:var(--ink); flex-shrink:0; width:52px; text-align:right;}
 </style>
 <body>
 
@@ -738,23 +695,10 @@
     </div>
   </div>
 
-  <div id="topsView" style="display:none;">
-    <button class="back-btn" onclick="showConectados()" style="padding-left:0; margin-bottom:14px;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="12" height="12"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      Volver a Conectados
-    </button>
-    <div class="grid-label"><span>Tops Setiembre — vista general</span></div>
-    <div id="topsContent"></div>
-  </div>
-
   <div id="conectadosHome" style="display:none;">
   <button class="back-btn" onclick="showHome()" style="padding-left:0; margin-bottom:14px; position:relative; z-index:6;">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="12" height="12"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
     Menú principal
-  </button>
-  <button id="adminTopsBtn" onclick="showTops()" style="display:none; width:100%; margin-bottom:14px; padding:12px 16px; background:var(--ink); color:#fff; border:none; border-radius:10px; font-family:'Oswald',sans-serif; font-weight:600; font-size:14px; letter-spacing:.02em; text-transform:uppercase; cursor:pointer; align-items:center; justify-content:center; gap:8px;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-    Ver Tops Setiembre (Admin)
   </button>
   <div class="search-block" style="margin-top:0;">
     <div class="search-box">
@@ -1236,7 +1180,6 @@ function showHome(){
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
-  document.getElementById('topsView').style.display = 'none';
   setHeader('home');
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -1249,7 +1192,6 @@ function showLayouts(){
   document.getElementById('layoutsView').style.display = 'block';
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
-  document.getElementById('topsView').style.display = 'none';
   setHeader('layouts');
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -1263,90 +1205,8 @@ function showConectados(){
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
-  document.getElementById('topsView').style.display = 'none';
   document.getElementById('storeSearchHome').value = '';
   document.getElementById('storeSearchHomeResults').style.display = 'none';
-  document.getElementById('adminTopsBtn').style.display = (sessionStorage.getItem('ck_admin') === '1') ? 'flex' : 'none';
-  setHeader('conectados');
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-
-// ---------- Tops Setiembre (admin) ----------
-const TOPS_LABELS = {
-  'TAMBO|FMC': { title:'TAMBO — PM Caps (FMC)', n: WIN_N['TAMBO|FMC'] },
-  'TAMBO|VUSE': { title:'TAMBO — VUSE', n: WIN_N['TAMBO|VUSE'] },
-  'TAMBO|VELO': { title:'TAMBO — VELO', n: WIN_N['TAMBO|VELO'] },
-  'AVA|VELO': { title:'AVA — VELO', n: WIN_N['AVA|VELO'] },
-};
-
-function fmtNum2(n){
-  if(n === null || n === undefined) return '0';
-  return (Math.round(n*100)/100).toLocaleString('es-PE');
-}
-
-function renderTopsView(){
-  const order = ['TAMBO|FMC','TAMBO|VUSE','TAMBO|VELO','AVA|VELO'];
-  const html = order.map(bkeySuffix => {
-    const bkey = 'SETIEMBRE|' + bkeySuffix;
-    const rows = buckets[bkey] || [];
-    const meta = TOPS_LABELS[bkeySuffix];
-    if(rows.length === 0) return '';
-
-    const totalCuota = rows.reduce((s,r)=>s+(r.cuota||0), 0);
-    const totalAvance = rows.reduce((s,r)=>s+(r.avance||0), 0);
-    const overallPct = totalCuota ? (totalAvance/totalCuota) : 0;
-
-    const top = rows.slice(0, meta.n);
-    const rowsHtml = top.map(r => {
-      const rankClass = r._rank <= 3 ? 'top3' : '';
-      return `<div class="tops-row">
-        <div class="tops-rank ${rankClass}">#${r._rank}</div>
-        <div class="tops-store">
-          <div class="tops-store-name">${r.pos}</div>
-          <div class="tops-store-prom">${r.promotor}</div>
-        </div>
-        <div class="tops-pct">${(r.pct*100).toFixed(0)}%</div>
-      </div>`;
-    }).join('');
-
-    return `<div class="tops-section">
-      <div class="tops-header">
-        <div class="tops-header-title">${meta.title}</div>
-        <div class="tops-header-sub">${rows.length} tiendas · Top ${meta.n} dentro de premio</div>
-      </div>
-      <div class="tops-overall">
-        <div class="tops-overall-stat">
-          <div class="tops-overall-num">${fmtNum2(totalAvance)}</div>
-          <div class="tops-overall-label">Avance total</div>
-        </div>
-        <div class="tops-overall-stat">
-          <div class="tops-overall-num">${fmtNum2(totalCuota)}</div>
-          <div class="tops-overall-label">Cuota total</div>
-        </div>
-        <div class="tops-overall-stat">
-          <div class="tops-overall-num">${(overallPct*100).toFixed(0)}%</div>
-          <div class="tops-overall-label">Avance general</div>
-        </div>
-      </div>
-      <div class="tops-bar-track"><div class="tops-bar-fill" style="width:${Math.min(overallPct*100,100)}%;"></div></div>
-      ${rowsHtml}
-    </div>`;
-  }).join('');
-
-  document.getElementById('topsContent').innerHTML = html;
-}
-
-function showTops(){
-  if(sessionStorage.getItem('ck_admin') !== '1') return;
-  document.getElementById('homeView').style.display = 'none';
-  document.getElementById('conectadosHome').style.display = 'none';
-  document.getElementById('detailView').style.display = 'none';
-  document.getElementById('rulesBlock').style.display = 'none';
-  document.getElementById('layoutsView').style.display = 'none';
-  document.getElementById('materialesHome').style.display = 'none';
-  document.getElementById('materialesDetailView').style.display = 'none';
-  document.getElementById('topsView').style.display = 'block';
-  renderTopsView();
   setHeader('conectados');
   window.scrollTo({top:0, behavior:'smooth'});
 }
