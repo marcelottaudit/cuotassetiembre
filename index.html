@@ -828,6 +828,33 @@
     </div>
   </div>
 
+  <div class="rules" id="rulesBlockOctubre" style="display:none;">
+    <h2><span class="gold">★</span> Premios vigentes — Octubre</h2>
+    <div class="rsub">Ganan las tiendas con mayor % incremental de ventas versus su cuota — no es por cuota cumplida, es por ranking.</div>
+    <div class="rule-grid">
+      <div class="rule-card">
+        <div class="rtitle"><span class="sw" style="background:var(--fmc)"></span>FMC · Oxxo</div>
+        <div class="win-n">8 POS ganadoras</div>
+        <p>PM Caps 20s. Las tiendas que alcancen el mayor % incremental de ventas de PM Caps versus la cuota ganarán <b>100 puntos en Aprecio</b> cada una.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rtitle"><span class="sw" style="background:var(--vuse)"></span>VUSE · Oxxo</div>
+        <div class="win-n">15 POS ganadoras</div>
+        <p>Vuse full portafolio. Las tiendas que alcancen el mayor % incremental de ventas de Vuse versus la cuota ganarán <b>60 puntos en Aprecio</b> cada una.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rtitle"><span class="sw" style="background:var(--velo)"></span>VELO · Tambo</div>
+        <div class="win-n">15 POS ganadoras</div>
+        <p>Velo full portafolio. Las tiendas que alcancen el mayor % incremental de ventas de Velo versus la cuota ganarán <b>60 puntos en Aprecio</b> cada una. Nuevos sabores valen doble.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rtitle"><span class="sw" style="background:var(--velo)"></span>VELO · Oxxo</div>
+        <div class="win-n">10 POS ganadoras</div>
+        <p>Velo full portafolio. Las tiendas que alcancen el mayor % incremental de ventas de Velo versus la cuota ganarán <b>60 puntos en Aprecio</b> cada una. Nuevos sabores valen doble.</p>
+      </div>
+    </div>
+  </div>
+
   <footer>TT AUDIT — Cuotas Conectados KA · Agosto, Setiembre y Octubre 2026</footer>
 </div>
 
@@ -1170,6 +1197,7 @@ function showHome(){
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('rulesBlock').style.display = 'none';
+  document.getElementById('rulesBlockOctubre').style.display = 'none';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
@@ -1182,6 +1210,7 @@ function showLayouts(){
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('rulesBlock').style.display = 'none';
+  document.getElementById('rulesBlockOctubre').style.display = 'none';
   document.getElementById('layoutsView').style.display = 'block';
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
@@ -1195,6 +1224,7 @@ function showConectados(){
   document.getElementById('promoterView').style.display = 'block';
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('rulesBlock').style.display = 'block';
+  document.getElementById('rulesBlockOctubre').style.display = 'block';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
@@ -1221,6 +1251,7 @@ function openPromoter(name){
   document.getElementById('promoterView').style.display = 'none';
   document.getElementById('detailView').style.display = 'block';
   document.getElementById('rulesBlock').style.display = 'block';
+  document.getElementById('rulesBlockOctubre').style.display = 'block';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
@@ -1246,6 +1277,7 @@ function showMaterialesHome(){
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
   document.getElementById('rulesBlock').style.display = 'none';
+  document.getElementById('rulesBlockOctubre').style.display = 'none';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'block';
@@ -1399,6 +1431,7 @@ function logout(){
   document.getElementById('materialesDetailView').style.display = 'none';
   document.getElementById('homeView').style.display = 'block';
   document.getElementById('rulesBlock').style.display = 'none';
+  document.getElementById('rulesBlockOctubre').style.display = 'none';
   setHeader('home');
   document.getElementById('gate').classList.remove('hidden');
   document.getElementById('gateUser').focus();
