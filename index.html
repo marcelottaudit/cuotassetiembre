@@ -797,37 +797,6 @@
     <div id="materialesStoreList"></div>
   </div>
 
-  <div class="rules" id="rulesBlock" style="display:none;">
-    <h2><span class="gold">★</span> Premios vigentes — Setiembre</h2>
-    <div class="rsub">Ganan las tiendas con mayor % de avance dentro de cada categoría — no es por cuota cumplida, es por ranking. (Julio y Agosto se consultan en las pestañas de mes de tu perfil, con sus propios resultados.)</div>
-    <div class="rule-grid">
-      <div class="rule-card">
-        <div class="rtitle"><span class="sw" style="background:var(--fmc)"></span>FMC · Tambo</div>
-        <div class="win-n">30 POS ganadoras</div>
-        <p>Las 30 tiendas con mayor % de avance de la categoría PM CAPS 20 ganan <b>S/ 60 en Aprecio</b> cada una.</p>
-      </div>
-      <div class="rule-card">
-        <div class="rtitle"><span class="sw" style="background:var(--vuse)"></span>VUSE · Tambo</div>
-        <div class="win-n">15 POS ganadoras</div>
-        <ol>
-          <li><b>1er puesto</b> (1 POS): iPad Apple</li>
-          <li><b>2do puesto</b> (1 POS): Audífonos Sony</li>
-          <li><b>3er al 15to</b> (13 POS): 100 puntos en Aprecio</li>
-        </ol>
-      </div>
-      <div class="rule-card">
-        <div class="rtitle"><span class="sw" style="background:var(--velo)"></span>VELO · Tambo</div>
-        <div class="win-n">20 POS ganadoras</div>
-        <p>Las 20 tiendas con mayor % de avance ganan <b>60 puntos en Aprecio</b> cada una.</p>
-      </div>
-      <div class="rule-card">
-        <div class="rtitle"><span class="sw" style="background:var(--velo)"></span>VELO · Ava</div>
-        <div class="win-n">5 POS ganadoras</div>
-        <p>Las 5 tiendas con mayor % de avance ganan <b>100 puntos en Aprecio</b> cada una.</p>
-      </div>
-    </div>
-  </div>
-
   <div class="rules" id="rulesBlockOctubre" style="display:none;">
     <h2><span class="gold">★</span> Premios vigentes — Octubre</h2>
     <div class="rsub">Ganan las tiendas con mayor % incremental de ventas versus su cuota — no es por cuota cumplida, es por ranking.</div>
@@ -1196,7 +1165,6 @@ function showHome(){
   document.getElementById('homeView').style.display = 'block';
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
-  document.getElementById('rulesBlock').style.display = 'none';
   document.getElementById('rulesBlockOctubre').style.display = 'none';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
@@ -1209,7 +1177,6 @@ function showLayouts(){
   document.getElementById('homeView').style.display = 'none';
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
-  document.getElementById('rulesBlock').style.display = 'none';
   document.getElementById('rulesBlockOctubre').style.display = 'none';
   document.getElementById('layoutsView').style.display = 'block';
   document.getElementById('materialesHome').style.display = 'none';
@@ -1223,7 +1190,6 @@ function showConectados(){
   document.getElementById('conectadosHome').style.display = 'block';
   document.getElementById('promoterView').style.display = 'block';
   document.getElementById('detailView').style.display = 'none';
-  document.getElementById('rulesBlock').style.display = 'block';
   document.getElementById('rulesBlockOctubre').style.display = 'block';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
@@ -1250,7 +1216,6 @@ function openPromoter(name){
   document.getElementById('conectadosHome').style.display = 'block';
   document.getElementById('promoterView').style.display = 'none';
   document.getElementById('detailView').style.display = 'block';
-  document.getElementById('rulesBlock').style.display = 'block';
   document.getElementById('rulesBlockOctubre').style.display = 'block';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesHome').style.display = 'none';
@@ -1276,7 +1241,6 @@ function showMaterialesHome(){
   document.getElementById('homeView').style.display = 'none';
   document.getElementById('conectadosHome').style.display = 'none';
   document.getElementById('detailView').style.display = 'none';
-  document.getElementById('rulesBlock').style.display = 'none';
   document.getElementById('rulesBlockOctubre').style.display = 'none';
   document.getElementById('layoutsView').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
@@ -1430,7 +1394,6 @@ function logout(){
   document.getElementById('materialesHome').style.display = 'none';
   document.getElementById('materialesDetailView').style.display = 'none';
   document.getElementById('homeView').style.display = 'block';
-  document.getElementById('rulesBlock').style.display = 'none';
   document.getElementById('rulesBlockOctubre').style.display = 'none';
   setHeader('home');
   document.getElementById('gate').classList.remove('hidden');
