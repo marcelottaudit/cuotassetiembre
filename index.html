@@ -1154,7 +1154,9 @@ function rankBadge(r, mes){
 }
 
 function storeCardHtml(r, mes){
-  const ck = r.categoria.toLowerCase();
+  // PM CAPS es la categoría FMC de OXXO y LS X VELO es la promo cross (color VELO)
+  const CAT_CLASS = { 'PM CAPS':'fmc', 'LS X VELO':'velo' };
+  const ck = CAT_CLASS[r.categoria] || r.categoria.toLowerCase().replace(/\s+/g,'-');
   const pct = Math.max(0, Math.min(999, Math.round((r.pct||0)*100)));
   return `<div class="store-card" data-search="${(r.tienda+' '+r.distrito).toLowerCase()}">
     <div class="store-top">
