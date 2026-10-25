@@ -996,8 +996,8 @@ const RAW_ALL = [{"mes": "AGOSTO", "cadena": "TAMBO", "codigo": 643235, "pos": "
 const MESES = ['AGOSTO','SETIEMBRE','OCTUBRE'];
 const MES_META = {
   'AGOSTO':    { label:'Agosto',    tag:'Cerrado',   bannerClass:'closed', banner:'✓ Mes cerrado — ganadores finales confirmados' },
-  'SETIEMBRE': { label:'Setiembre', tag:'En curso',     bannerClass:'live',     banner:'🟢 Mes en curso — el ranking se actualiza con cada avance' },
-  'OCTUBRE':   { label:'Octubre',   tag:'En curso',     bannerClass:'live',     banner:'🟢 Mes recién iniciado — sin avance registrado todavía' },
+  'SETIEMBRE': { label:'Setiembre', tag:'Cerrado',   bannerClass:'closed', banner:'✓ Mes cerrado — ranking al último corte de avance' },
+  'OCTUBRE':   { label:'Octubre',   tag:'En curso',     bannerClass:'live',     banner:'🟢 Mes en curso — el ranking se actualiza con cada avance' },
 };
 
 // winners cutoff per cadena+categoria bucket (solo aplica donde se conoce la regla; ganador real prevalece si existe el dato)
@@ -1076,25 +1076,31 @@ document.getElementById('promoterSearch').addEventListener('input', e=>{
 
 // ---------- store search (home) ----------
 const MES_ORDER = ['OCTUBRE','SETIEMBRE','AGOSTO'];
-const storeIndex = {}; // key: tienda|promotor -> {tienda, promotor, cadena, categoria, meses:Set}
+const storeIndex = {}; // key: cadena|tienda normalizada|promotor -> {tienda, promotor, cadena, categoria, meses:Set}
+// Normaliza el nombre para que "LARCO-C4", "Larco-C4" y "LARCO C4" sean la misma tienda
+function normTienda(t){ return String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,''); }
+function storeKey(cadena, tienda, promotor){ return cadena + '|' + normTienda(tienda) + '|' + promotor; }
 RAW_ALL.forEach(r=>{
   if(!r.promotor || r.promotor === 'SIN PROMOTOR' || !r.tienda) return;
-  const key = r.tienda.toLowerCase() + '|' + r.promotor;
-  if(!storeIndex[key]){
-    storeIndex[key] = { tienda:r.tienda, pos:r.pos, promotor:r.promotor, cadena:r.cadena, distrito:r.distrito, categoria:r.categoria, meses:new Set() };
+  const key = storeKey(r.cadena, r.tienda, r.promotor);
+  const s = storeIndex[key];
+  // Nombre y datos del mes más reciente, para abrir directo en ese mes
+  if(!s || MES_ORDER.indexOf(r.mes) < MES_ORDER.indexOf(s._mes)){
+    storeIndex[key] = { tienda:r.tienda, pos:r.pos, promotor:r.promotor, cadena:r.cadena, distrito:r.distrito, categoria:r.categoria, meses: s ? s.meses : new Set(), _mes:r.mes };
   }
   storeIndex[key].meses.add(r.mes);
 });
 const storeIndexList = Object.values(storeIndex);
 
-function goToStore(promotor, tiendaLower){
-  const meses = storeIndex[tiendaLower.toLowerCase()+'|'+promotor].meses;
+function goToStore(promotor, tiendaLower, cadena){
+  const entry = storeIndex[storeKey(cadena, tiendaLower, promotor)];
+  const meses = entry.meses;
   const bestMes = MES_ORDER.find(m=>meses.has(m));
   openPromoter(promotor);
   currentMes = bestMes;
   renderMonthTabs();
   renderDetailSummary();
-  const tiendaName = storeIndex[tiendaLower.toLowerCase()+'|'+promotor].tienda;
+  const tiendaName = entry.tienda;
   document.getElementById('storeSearch').value = tiendaName;
   renderStoreList(tiendaName);
 }
@@ -1107,7 +1113,8 @@ function renderStoreSearchHome(query){
     box.innerHTML = '';
     return;
   }
-  const hits = storeIndexList.filter(s => s.tienda.toLowerCase().includes(q)).slice(0, 20);
+  const qn = normTienda(q);
+  const hits = storeIndexList.filter(s => s.tienda.toLowerCase().includes(q) || (qn && normTienda(s.tienda).includes(qn))).slice(0, 20);
   box.style.display = 'block';
   if(hits.length === 0){
     box.innerHTML = '<div class="no-results">No se encontró ninguna tienda con ese nombre.</div>';
@@ -1115,7 +1122,7 @@ function renderStoreSearchHome(query){
   }
   box.innerHTML = hits.map(s=>{
     const mesesHtml = MES_ORDER.filter(m=>s.meses.has(m)).map(m=>`<span class="store-hit-month">${MES_META[m].label}</span>`).join('');
-    return `<div class="store-hit" onclick="goToStore('${s.promotor.replace(/'/g,"\\'")}','${s.tienda.replace(/'/g,"\\'")}')">
+    return `<div class="store-hit" onclick="goToStore('${s.promotor.replace(/'/g,"\\'")}','${s.tienda.replace(/'/g,"\\'")}','${s.cadena}')">
       <div class="store-hit-top">
         <div>
           <div class="store-hit-name">${s.pos}</div>
