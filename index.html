@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conectados KA — Setiembre 2026</title>
+<title>Portal de Promotores — TT Audit · BAT</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
@@ -595,6 +595,66 @@
     background:var(--paper); border:1px solid var(--line); color:var(--ink-soft);
   }
 
+  /* ---------- MI SEMANA (calendario materiales + Conectados) ---------- */
+  body.cal-wide .wrap, body.cal-wide .top-inner{max-width:1240px;}
+  .cal-weeks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:16px;}
+  .cal-wk{all:unset;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:9px 10px;display:flex;flex-direction:column;gap:2px;background:var(--paper);min-width:0;}
+  .cal-wk .t{font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;text-transform:uppercase;}
+  .cal-wk .d{font-size:11.5px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cal-wk .now{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--gold);font-weight:700;}
+  .cal-wk[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .cal-wk[aria-pressed="true"] .d{color:#C7D4E8;}
+  .cal-wk:focus-visible,.cal-dt:focus-visible{outline:2px solid var(--velo);outline-offset:2px;}
+  .cal-legend{display:flex;flex-wrap:wrap;gap:6px 10px;margin-top:12px;align-items:center;font-size:12px;color:var(--ink-soft);}
+  .cal-legend .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .fchip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+  .fchip.S{background:var(--win-soft);color:var(--win);}
+  .fchip.Q1{background:var(--velo-soft);color:var(--velo);}
+  .fchip.Q2{background:var(--vuse-soft);color:var(--vuse);}
+  .fchip.M{background:var(--fmc-soft);color:var(--fmc);}
+  .cal-switch{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .cal-btn{border:1.5px solid var(--ink);background:var(--paper-raised);color:var(--ink);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:9px 14px;border-radius:8px;cursor:pointer;}
+  .cal-btn.primary{background:var(--ink);color:#fff;}
+  .cal-daytabs{display:none;}
+  .cal{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:start;margin-top:14px;}
+  .cal-col{display:flex;flex-direction:column;gap:8px;min-width:0;}
+  .cal-colh{display:flex;justify-content:space-between;align-items:baseline;padding:8px 10px;border-radius:8px;background:var(--paper-raised);border:1px solid var(--line);}
+  .cal-colh .dn{font-family:'Oswald',sans-serif;font-weight:600;font-size:16px;text-transform:uppercase;}
+  .cal-colh .dd{font-size:11.5px;color:var(--ink-soft);}
+  .cal-colh .n{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-soft);}
+  .cal-col.today .cal-colh{border-color:var(--gold);box-shadow:inset 0 3px 0 var(--gold);}
+  .cal-col.off .cal-colh{opacity:.55;}
+  .cal-store{background:var(--paper-raised);border:1px solid var(--line);border-radius:9px;padding:10px 11px;display:flex;flex-direction:column;gap:7px;min-width:0;box-shadow:var(--shadow);}
+  .cal-sname{font-family:'Oswald',sans-serif;font-weight:600;font-size:14.5px;line-height:1.15;text-transform:uppercase;overflow-wrap:anywhere;}
+  .cal-sloc{font-size:11.5px;color:var(--ink-soft);margin-top:2px;}
+  .cal-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .cal-sec{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px;}
+  .cal-store .mat-chip-row{margin-top:0;gap:4px;}
+  .cal-store .mat-chip{font-size:9.5px;padding:3px 7px;}
+  .cal-cx{border-top:1px dashed var(--line);padding-top:7px;display:flex;flex-direction:column;gap:5px;}
+  .cal-cx-top{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;}
+  .cal-cx-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);}
+  .cal-cx-num b{color:var(--ink);}
+  .cal-cx .rank-badge{align-self:flex-start;white-space:normal;font-size:9.5px;}
+  .cal-cx .bar-track{height:5px;}
+  .cal-empty{font-size:12.5px;color:var(--ink-soft);padding:14px 10px;text-align:center;border:1px dashed var(--line);border-radius:8px;background:var(--paper-raised);}
+  .cal-note{font-size:12px;color:var(--ink-soft);margin-top:14px;line-height:1.5;}
+  @media (max-width:1000px){
+    .cal{grid-template-columns:1fr;}
+    .cal-col{display:none;} .cal-col.sel{display:flex;}
+    .cal-col .cal-colh{display:none;}
+    .cal-daytabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;position:sticky;top:0;z-index:5;background:var(--paper);padding:8px 0;margin-top:10px;}
+    .cal-dt{all:unset;cursor:pointer;text-align:center;border:1px solid var(--line);border-radius:8px;padding:7px 2px;background:var(--paper-raised);min-width:0;}
+    .cal-dt .a{font-family:'Oswald',sans-serif;font-weight:600;font-size:14px;text-transform:uppercase;display:block;}
+    .cal-dt .b{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-soft);}
+    .cal-dt[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;}
+    .cal-dt .c{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;margin-top:1px;}
+    .cal-dt[aria-pressed="true"] .b{color:#C7D4E8;}
+    .cal-dt.today{box-shadow:inset 0 -3px 0 var(--gold);}
+    .cal-weeks{gap:5px;} .cal-wk{padding:7px 6px;} .cal-wk .t{font-size:13px;} .cal-wk .d{font-size:10px;}
+    .cal-store .mat-chip{font-size:10.5px;padding:4px 9px;}
+  }
+
 </style>
 <body>
 
@@ -642,12 +702,12 @@
         <div class="home-card-desc">Consulta tu avance de cuota por tienda, mes a mes.</div>
       </button>
 
-      <a class="home-card" href="presentacion-octubre.pdf" target="_blank" rel="noopener">
+      <a class="home-card" href="presentacion-noviembre.pdf" target="_blank" rel="noopener">
         <div class="home-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
-        <div class="home-card-title">Presentación Octubre BAT</div>
-        <div class="home-card-desc">Rol del promotor, portafolio, dinámicas de Conectados y materiales de convivencia.</div>
+        <div class="home-card-title">Presentación Noviembre BAT</div>
+        <div class="home-card-desc">Rol del promotor, portafolio Lucky Strike y Pall Mall, cambio de imagen de Lucky Core y combo pack.</div>
       </a>
 
       <button class="home-card" onclick="showLayouts()">
@@ -658,12 +718,20 @@
         <div class="home-card-desc">Planogramas y layouts de exhibición por cadena: Tambo, Ava, Primax, Repsol, Oxxo y más.</div>
       </button>
 
-      <a class="home-card" href="carta-presentacion.pdf" target="_blank" rel="noopener">
+      <a class="home-card" href="carta-presentacion-noviembre.pdf" target="_blank" rel="noopener">
         <div class="home-card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M4 4h16v16H4z"/><path d="M4 8h16"/><path d="M8 4v4"/></svg>
         </div>
-        <div class="home-card-title">Carta de Presentación Octubre</div>
+        <div class="home-card-title">Carta de Presentación Noviembre</div>
         <div class="home-card-desc">Carta oficial de TT Audit con el equipo de promotores autorizado por BAT, para presentar en tienda.</div>
+      </a>
+
+      <a class="home-card" href="sctr-noviembre.pdf" target="_blank" rel="noopener">
+        <div class="home-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="home-card-title">SCTR Noviembre</div>
+        <div class="home-card-desc">Constancia del Seguro Complementario de Trabajo de Riesgo vigente de noviembre, para presentar en tienda si la piden.</div>
       </a>
 
       <a class="home-card" href="materiales-setiembre.pdf" target="_blank" rel="noopener">
@@ -676,10 +744,10 @@
 
       <button class="home-card" onclick="showMaterialesHome()">
         <div class="home-card-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><path d="M9 12l2 2 4-4"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 15l2 2 4-4"/></svg>
         </div>
-        <div class="home-card-title">¿Qué materiales se deben implementar en cada tienda?</div>
-        <div class="home-card-desc">Selecciona tu nombre y revisa qué material corresponde instalar en cada una de tus tiendas, ordenadas por cadena.</div>
+        <div class="home-card-title">Mi semana: materiales y Conectados</div>
+        <div class="home-card-desc">Tu calendario de lunes a sábado: qué tiendas te tocan cada día, qué material implementar en cada una y cómo vas en tu cuota de Conectados.</div>
       </button>
     </div>
   </div>
@@ -804,6 +872,7 @@
     <div class="detail-header">
       <div class="detail-name" id="detailName"></div>
       <div class="detail-summary" id="detailSummary"></div>
+      <div class="cal-switch" id="cxToCal"><button class="cal-btn primary" onclick="openMaterialesPromoter(currentPromoter)">📅 Ver mi semana en calendario</button></div>
 
       <div class="month-tabs" id="monthTabs"></div>
       <div class="month-banner" id="monthBanner"></div>
@@ -840,13 +909,19 @@
   </div>
 
   <div id="materialesDetailView" style="display:none; margin-top:18px;">
-    <button class="back-btn" onclick="showMaterialesHome()" style="padding-left:0;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="12" height="12"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      Volver a la lista
-    </button>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <button class="back-btn" onclick="showMaterialesHome()" style="padding-left:0;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="12" height="12"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Volver a la lista
+      </button>
+      <button class="back-btn" onclick="logout()">Cerrar sesión</button>
+    </div>
     <div class="detail-header">
       <div class="detail-name" id="materialesDetailName"></div>
       <div class="detail-summary" id="materialesDetailSummary"></div>
+      <div class="cal-weeks" id="calWeeks"></div>
+      <div class="cal-legend" id="calLegend"></div>
+      <div class="cal-switch" id="calToCx"></div>
       <div class="store-search">
         <div class="search-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -854,7 +929,9 @@
         </div>
       </div>
     </div>
-    <div id="materialesStoreList"></div>
+    <div class="cal-daytabs" id="calDayTabs"></div>
+    <div class="cal" id="materialesStoreList"></div>
+    <p class="cal-note">Calendario de noviembre 2026. Quincenal 1 se visita en las semanas 2 y 4; Quincenal 2 en las semanas 1, 3 y 5; Mensual en la semana 1. La cuota de Conectados es la de noviembre y el puesto se actualiza con cada avance.</p>
   </div>
 
   <div class="rules" id="rulesBlockOctubre" style="display:none;">
@@ -998,6 +1075,13 @@ const USER_MAP = {
   "YUBICSA ANGELES": "yangeles@ttaudit.com"
 };
 
+// Usuarios de consulta (no promotores): entran al menú principal y ven a todos los promotores
+const STAFF_USERS = {
+  "acastro@ttaudit.com": "Ttaudit2026",
+  "rtello@ttaudit.com": "70888960",
+  "cpineda@ttaudit.com": "00226832"
+};
+
 const EMAIL_TO_NAME = {};
 for(const name in USER_MAP){ EMAIL_TO_NAME[USER_MAP[name].toLowerCase()] = name; }
 
@@ -1015,12 +1099,22 @@ function tryUnlock(){
     return;
   }
 
+  if(STAFF_USERS[userVal] && passVal === STAFF_USERS[userVal]){
+    sessionStorage.setItem('ck_unlocked', '1');
+    sessionStorage.setItem('ck_staff', '1');
+    sessionStorage.removeItem('ck_promotor');
+    document.getElementById('gate').classList.add('hidden');
+    if(typeof showHome === 'function'){ showHome(); }
+    return;
+  }
+
   const matchedName = EMAIL_TO_NAME[userVal];
   if(matchedName && passVal === PASSWORD_MAP[matchedName]){
     sessionStorage.setItem('ck_unlocked', '1');
     sessionStorage.setItem('ck_promotor', matchedName);
     document.getElementById('gate').classList.add('hidden');
-    if(typeof openPromoter === 'function'){ openPromoter(matchedName); }
+    if(typeof openMaterialesPromoter === 'function' && materialesPromoterMap[matchedName]){ openMaterialesPromoter(matchedName); }
+    else if(typeof openPromoter === 'function'){ openPromoter(matchedName); }
   } else {
     document.getElementById('gateError').style.display = 'block';
     document.getElementById('gatePass').value = '';
@@ -1320,9 +1414,10 @@ const HEADER_TEXT = {
   conectados: { title:'Conectados KA', sub:'Agosto a Noviembre 2026 — consulta tu avance de cuota por tienda, mes a mes.' },
   layouts: { title:'Layout de Cadenas', sub:'Planogramas y layouts de exhibición vigentes por cadena.' },
   anuncios: { title:'Anuncios del mes', sub:'Octubre 2026 — lo que tienes que priorizar en cada cadena.' },
-  materiales: { title:'Materiales por Tienda', sub:'Noviembre 2026 — selecciona tu nombre y revisa qué material implementar en cada tienda.' },
+  materiales: { title:'Mi semana', sub:'Noviembre 2026 — tus tiendas por día de visita, el material a implementar y tu cuota de Conectados.' },
 };
 function setHeader(key){
+  document.body.classList.remove('cal-wide');
   document.getElementById('mainTitle').textContent = HEADER_TEXT[key].title;
   document.getElementById('mainSub').textContent = HEADER_TEXT[key].sub;
 }
@@ -1372,6 +1467,7 @@ function openPromoter(name){
   currentPromoter = name;
   currentMes = MES_ORDER.find(m => promoterMap[name][m].length > 0) || MES_ORDER[0];
   document.getElementById('detailName').textContent = name;
+  document.getElementById('cxToCal').style.display = (typeof materialesPromoterMap !== 'undefined' && materialesPromoterMap[name]) ? 'flex' : 'none';
 
   renderMonthTabs();
   renderDetailSummary();
@@ -1397,10 +1493,37 @@ const MATERIALES_DATA = [{"cadena": "TAMBO", "codigo": 393075, "tienda": "VILLA-
 const CHAIN_ORDER_MAT = ['TAMBO','AVA','PRIMAX','REPSOL','OXXO'];
 let currentMaterialesPromoter = null;
 
+// ---------- MI SEMANA: calendario por día de visita ----------
+const CAL_MES = 'NOVIEMBRE';
+const CAL_MONTH = 10; // noviembre (0 = enero)
+const CAL_WEEKS = [2,9,16,23,30].map((d,i)=>({n:i+1, start:new Date(2026,10,d)}));
+const CAL_DAYS = ['LUNES','MARTES','MIERCOLES','JUEVES','VIERNES','SABADO'];
+const CAL_DLABEL = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const CAL_DSHORT = ['Lun','Mar','Mié','Jue','Vie','Sáb'];
+const CAL_FREQ = {'SEMANAL':'S','QUINCENAL 1':'Q1','QUINCENAL 2':'Q2','MENSUAL':'M'};
+const CAL_FLABEL = {S:'Semanal',Q1:'Quincenal 1',Q2:'Quincenal 2',M:'Mensual'};
+// Q1 = semanas 2 y 4 (9–14 y 23–28 nov) · Q2 = semanas 1, 3 y 5 · Mensual = semana 1
+function calVisits(f, wn){ if(f==='S') return true; if(f==='Q1') return wn%2===0; if(f==='Q2') return wn%2===1; if(f==='M') return wn===1; return false; }
+function calNorm(t){ return String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().trim(); }
+const CAL_CX = {};
+(byMes[CAL_MES]||[]).forEach(r=>{ (CAL_CX[r.codigo] = CAL_CX[r.codigo] || []).push(r); });
+const CAL_STORES = MATERIALES_DATA.map(m=>{
+  const cx = CAL_CX[m.codigo] || [];
+  const pCx = cx.length && cx[0].promotor && cx[0].promotor !== 'SIN PROMOTOR' ? cx[0].promotor : null;
+  return Object.assign({}, m, { promotor: pCx || m.promotor, day: CAL_DAYS.indexOf(calNorm(m.dia)), f: CAL_FREQ[calNorm(m.frecuencia)] || 'S', cx });
+});
+
 const materialesPromoterMap = {};
-MATERIALES_DATA.forEach(r=>{
+CAL_STORES.forEach(r=>{
   if(!materialesPromoterMap[r.promotor]) materialesPromoterMap[r.promotor] = [];
   materialesPromoterMap[r.promotor].push(r);
+});
+// Promotores que comparten la misma ruta: ambos ven todas las tiendas del par
+const RUTAS_COMPARTIDAS = [['BRYAN AMAYA','JUAN CASTILLO']];
+RUTAS_COMPARTIDAS.forEach(par=>{
+  const union = [], vistos = new Set();
+  par.forEach(n=>(materialesPromoterMap[n]||[]).forEach(r=>{ if(!vistos.has(r.codigo)){ vistos.add(r.codigo); union.push(r); } }));
+  par.forEach(n=>{ materialesPromoterMap[n] = union; });
 });
 const materialesPromoterNames = Object.keys(materialesPromoterMap).sort((a,b)=>a.localeCompare(b,'es'));
 
@@ -1442,16 +1565,31 @@ document.getElementById('materialesPromoterSearch').addEventListener('input', e=
   renderMaterialesPromoterGrid(e.target.value);
 });
 
+const calToday = new Date(); calToday.setHours(0,0,0,0);
+function calCurWeek(){
+  for(let i=CAL_WEEKS.length-1;i>=0;i--){ if(calToday >= CAL_WEEKS[i].start) return i; }
+  return 0;
+}
+function calCurDay(){ const g = calToday.getDay(); return (g>=1 && g<=6) ? g-1 : 0; }
+const calState = { week: calCurWeek(), day: calCurDay() };
+
 function openMaterialesPromoter(name){
+  if(!materialesPromoterMap[name]) return;
   currentMaterialesPromoter = name;
+  calState.week = calCurWeek(); calState.day = calCurDay();
+  if(calState.week === 4 && calState.day > 0) calState.day = 0;
   document.getElementById('materialesDetailName').textContent = name;
   document.getElementById('materialesStoreSearch').value = '';
+  document.getElementById('calToCx').innerHTML = promoterMap[name]
+    ? `<button class="cal-btn" onclick="openPromoter(currentMaterialesPromoter)">Ver mi detalle de Conectados (todos los meses)</button>` : '';
   renderMaterialesStoreList('');
 
-  document.getElementById('homeView').style.display = 'none';
-  document.getElementById('materialesHome').style.display = 'none';
+  ['homeView','conectadosHome','detailView','rulesBlockOctubre','rulesBlockNoviembre','layoutsView','materialesHome','anunciosView'].forEach(id=>{
+    const el = document.getElementById(id); if(el) el.style.display = 'none';
+  });
   document.getElementById('materialesDetailView').style.display = 'block';
   setHeader('materiales');
+  document.body.classList.add('cal-wide');
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -1470,38 +1608,85 @@ function matStoreCardHtml(r){
   </div>`;
 }
 
-function renderMaterialesStoreList(filter){
-  const f = (filter||'').trim().toLowerCase();
-  const stores = materialesPromoterMap[currentMaterialesPromoter] || [];
-  const filtered = stores.filter(r => !f || (r.tienda+' '+r.distrito).toLowerCase().includes(f));
+function calAddDays(d,k){ const x = new Date(d); x.setDate(x.getDate()+k); return x; }
+function calFmt(d){ return d.getDate()+' '+['ene','feb','mar','abr','may','jun','jul','ago','set','oct','nov','dic'][d.getMonth()]; }
+const CAL_CAT_CLASS = { 'PM CAPS':'fmc', 'LS X VELO':'velo', 'PLAN VENTA CERO':'velo', 'PROMO LS + CAFÉ':'fmc' };
+const CAL_CHAIN_IDX = c => { const i = CHAIN_ORDER_MAT.indexOf(c); return i<0 ? 99 : i; };
 
-  const numCadenas = new Set(filtered.map(r=>r.cadena)).size;
-  document.getElementById('materialesDetailSummary').innerHTML = `
-    <div class="dsum"><b>${filtered.length}</b><span>Tienda${filtered.length===1?'':'s'}</span></div>
-    <div class="dsum"><b>${numCadenas}</b><span>Cadena${numCadenas===1?'':'s'}</span></div>
-  `;
-
-  const list = document.getElementById('materialesStoreList');
-  if(filtered.length===0){
-    list.innerHTML = '<div class="no-results">No se encontró ninguna tienda con ese nombre.</div>';
-    return;
-  }
-
-  const byChain = {};
-  filtered.forEach(r=>{
-    if(!byChain[r.cadena]) byChain[r.cadena] = [];
-    byChain[r.cadena].push(r);
-  });
-  const chainsPresent = CHAIN_ORDER_MAT.filter(c=>byChain[c]);
-  Object.keys(byChain).forEach(c=>{ if(!chainsPresent.includes(c)) chainsPresent.push(c); });
-
-  list.innerHTML = chainsPresent.map(c=>{
-    const rows = [...byChain[c]].sort((a,b)=>a.tienda.localeCompare(b.tienda,'es'));
-    return `<div class="mat-chain-section">
-      <div class="mat-chain-title"><span class="chain-dot ${c.toLowerCase()}">${c}</span><span class="mat-chain-count">${rows.length} tienda${rows.length===1?'':'s'}</span></div>
-      <div class="mat-store-grid">${rows.map(matStoreCardHtml).join('')}</div>
+function calCard(s){
+  const chips = (s.materiales||[]).map(m=>`<span class="mat-chip">${anEsc(m)}</span>`).join('');
+  const provinciaTxt = (s.provincia && s.provincia !== s.distrito) ? ' · ' + s.provincia : '';
+  const cx = s.cx.map(r=>{
+    const ck = CAL_CAT_CLASS[r.categoria] || r.categoria.toLowerCase().replace(/\s+/g,'-');
+    const pct = Math.max(0, Math.min(999, Math.round((r.pct||0)*100)));
+    return `<div class="cal-cx">
+      <div class="cal-cx-top"><span class="cat-tag ${ck}">${anEsc(r.categoria)}</span><span class="cal-cx-num"><b>${fmtNum(r.avance)}</b> / ${fmtNum(r.cuota)} · <b>${pct}%</b></span></div>
+      <div class="bar-track"><div class="bar-fill ${ck}" style="width:${Math.min(100,pct)}%"></div></div>
+      ${rankBadge(r, CAL_MES)}
     </div>`;
   }).join('');
+  return `<article class="cal-store">
+    <div><div class="cal-sname">${anEsc(s.cadena)} - ${anEsc(s.tienda)}</div><div class="cal-sloc">${anEsc(s.distrito||'')}${anEsc(provinciaTxt)}</div></div>
+    <div class="cal-tags"><span class="chain-dot ${s.cadena.toLowerCase()}">${anEsc(s.cadena)}</span><span class="fchip ${s.f}">${CAL_FLABEL[s.f]}</span></div>
+    ${chips ? `<div><div class="cal-sec">Materiales a implementar</div><div class="mat-chip-row">${chips}</div></div>` : ''}
+    ${cx ? `<div><div class="cal-sec">Conectados ${MES_META[CAL_MES].label}</div>${cx}</div>` : ''}
+  </article>`;
+}
+
+function renderMaterialesStoreList(filter){
+  const f = normTienda(filter||'');
+  const L = materialesPromoterMap[currentMaterialesPromoter] || [];
+  const W = CAL_WEEKS[calState.week];
+  const match = r => !f || normTienda(r.tienda+' '+r.distrito+' '+(r.provincia||'')+' '+r.cadena).includes(f);
+  const cols = CAL_DAYS.map((_,d)=>{
+    const date = calAddDays(W.start, d);
+    const inMonth = date.getMonth() === CAL_MONTH;
+    const list = inMonth ? L.filter(r => r.day===d && calVisits(r.f, W.n) && match(r))
+      .sort((a,b)=> (CAL_CHAIN_IDX(a.cadena)-CAL_CHAIN_IDX(b.cadena)) || a.tienda.localeCompare(b.tienda,'es')) : [];
+    return { d, date, inMonth, list, isToday: date.getTime() === calToday.getTime() };
+  });
+  const totalSemana = cols.reduce((a,c)=>a+c.list.length,0);
+  const conCx = L.filter(r=>r.cx.length).length;
+  const sinDia = L.filter(r=>r.day<0).length;
+
+  document.getElementById('materialesDetailSummary').innerHTML = `
+    <div class="dsum"><b>${L.length}</b><span>Tiendas</span></div>
+    <div class="dsum"><b>${totalSemana}</b><span>Visitas sem. ${W.n}${f?' (filtro)':''}</span></div>
+    <div class="dsum"><b>${conCx}</b><span>Con Conectados</span></div>
+  `;
+
+  document.getElementById('calWeeks').innerHTML = CAL_WEEKS.map((w,i)=>{
+    const end = calAddDays(w.start,5);
+    const isNow = calToday >= w.start && calToday <= calAddDays(w.start,6);
+    const rango = i===4 ? calFmt(w.start) : w.start.getDate()+'–'+calFmt(end);
+    return `<button class="cal-wk" aria-pressed="${i===calState.week}" onclick="calPickWeek(${i})"><span class="t">Sem ${w.n}</span><span class="d">${rango}</span>${isNow?'<span class="now">ESTA SEMANA</span>':''}</button>`;
+  }).join('');
+
+  const fc = {S:0,Q1:0,Q2:0,M:0}; L.forEach(r=>fc[r.f]++);
+  document.getElementById('calLegend').innerHTML = `<span class="lbl">Frecuencia</span>` +
+    Object.keys(CAL_FLABEL).filter(k=>fc[k]).map(k=>`<span class="fchip ${k}">${CAL_FLABEL[k]} · ${fc[k]}</span>`).join('') +
+    (sinDia ? `<span style="color:var(--ava)">· ${sinDia} tienda(s) sin día de visita</span>` : '');
+
+  document.getElementById('calDayTabs').innerHTML = cols.map(c=>
+    `<button class="cal-dt${c.isToday?' today':''}" aria-pressed="${c.d===calState.day}" onclick="calPickDay(${c.d})"><span class="a">${CAL_DSHORT[c.d]}</span><span class="b">${c.inMonth ? calFmt(c.date) : '—'}</span>${c.inMonth ? `<span class="c">${c.list.length} PDV</span>` : ''}</button>`
+  ).join('');
+
+  document.getElementById('materialesStoreList').innerHTML = cols.map(c=>`
+    <div class="cal-col${c.isToday?' today':''}${c.d===calState.day?' sel':''}${c.inMonth?'':' off'}">
+      <div class="cal-colh"><span><span class="dn">${CAL_DLABEL[c.d]}</span> <span class="dd">${calFmt(c.date)}</span></span><span class="n">${c.inMonth ? c.list.length : ''}</span></div>
+      ${!c.inMonth ? `<div class="cal-empty">Diciembre · ver calendario del próximo mes</div>`
+        : c.list.length ? c.list.map(calCard).join('')
+        : `<div class="cal-empty">${f ? 'Sin coincidencias este día' : 'Sin visitas este día'}</div>`}
+    </div>`).join('');
+}
+function calPickWeek(i){
+  calState.week = i;
+  if(i === 4) calState.day = 0;
+  renderMaterialesStoreList(document.getElementById('materialesStoreSearch').value);
+}
+function calPickDay(d){
+  calState.day = d;
+  renderMaterialesStoreList(document.getElementById('materialesStoreSearch').value);
 }
 
 document.getElementById('materialesStoreSearch').addEventListener('input', e=>{
@@ -1552,6 +1737,7 @@ function logout(){
   sessionStorage.removeItem('ck_unlocked');
   sessionStorage.removeItem('ck_promotor');
   sessionStorage.removeItem('ck_admin');
+  sessionStorage.removeItem('ck_staff');
   document.getElementById('gateUser').value = '';
   document.getElementById('gatePass').value = '';
   document.getElementById('gateError').style.display = 'none';
@@ -1630,7 +1816,7 @@ const ANUNCIOS = {
     ['5 materiales nuevos en la app','Reinicia la app para verlos. Revisa tu PDF de materiales de octubre para saber en qué tiendas va cada uno.'],
     ['Retira promos vencidas de la competencia','Toda promoción que ya no esté vigente se retira, como la de Marlboro.'],
     ['App de promotoría actualizada','Nueva versión del 07/10. Instálala antes de tu siguiente visita.'],
-    ['Carta de presentación Octubre','Llévala en el celular por si la tienda la pide.','carta-presentacion.pdf','Abrir carta']
+    ['Carta de presentación Noviembre','Llévala en el celular por si la tienda la pide.','carta-presentacion-noviembre.pdf','Abrir carta']
   ]
 };
 let anActive = 'OXXO';
@@ -1675,11 +1861,13 @@ function showAnuncios(){
 // ---------- restore session ----------
 if(sessionStorage.getItem('ck_unlocked') === '1'){
   document.getElementById('gate').classList.add('hidden');
-  if(sessionStorage.getItem('ck_admin') === '1'){
+  if(sessionStorage.getItem('ck_admin') === '1' || sessionStorage.getItem('ck_staff') === '1'){
     showHome();
   } else {
     const savedName = sessionStorage.getItem('ck_promotor');
-    if(savedName && promoterMap[savedName]){
+    if(savedName && materialesPromoterMap[savedName]){
+      openMaterialesPromoter(savedName);
+    } else if(savedName && promoterMap[savedName]){
       openPromoter(savedName);
     }
   }
