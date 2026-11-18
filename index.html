@@ -655,6 +655,69 @@
     .cal-store .mat-chip{font-size:10.5px;padding:4px 9px;}
   }
 
+  /* ---------- RECORDATORIO STOCK DE MATERIALES ---------- */
+  .stock-reminder{display:none;margin:0 0 16px;border-radius:10px;padding:12px 14px;background:var(--gold-soft);border:1.5px solid var(--gold);color:var(--ink);gap:12px;align-items:center;flex-wrap:wrap;}
+  .stock-reminder.on{display:flex;}
+  .stock-reminder.urgent{background:#FDE8D7;border-color:#C9691E;}
+  .stock-reminder .sr-ico{font-size:22px;line-height:1;}
+  .stock-reminder .sr-txt{flex:1;min-width:200px;font-size:13.5px;line-height:1.4;}
+  .stock-reminder .sr-txt b{font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;text-transform:uppercase;display:block;letter-spacing:.01em;}
+  .stock-reminder a{background:var(--ink);color:#fff;text-decoration:none;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:9px 14px;border-radius:7px;white-space:nowrap;}
+  .home-card .hc-badge{position:absolute;top:12px;right:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.08em;background:var(--gold-soft);color:#6B530A;padding:3px 8px;border-radius:999px;}
+  .home-card{position:relative;}
+
+  /* ---------- AVANCE DE PROMOCIONES ---------- */
+  .pr-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .pr-tab{all:unset;cursor:pointer;border:1.5px solid var(--line);background:var(--paper-raised);border-radius:9px;padding:9px 13px;font-family:'Oswald',sans-serif;font-weight:600;font-size:14.5px;text-transform:uppercase;letter-spacing:.01em;display:flex;align-items:center;gap:8px;}
+  .pr-tab .pt-sub{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-soft);letter-spacing:.05em;}
+  .pr-tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .pr-tab[aria-selected="true"] .pt-sub{color:#C7D4E8;}
+  .pr-tab:focus-visible,.pr-seg button:focus-visible{outline:2px solid var(--velo);outline-offset:2px;}
+  .pr-head{background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow);}
+  .pr-head h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;margin:0 0 4px;}
+  .pr-head p{margin:6px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink-soft);}
+  .pr-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .pr-fact{border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--paper);}
+  .pr-fact .k{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
+  .pr-fact .v{font-family:'Oswald',sans-serif;font-weight:600;font-size:17px;}
+  .pr-seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;margin:16px 0 10px;}
+  .pr-seg button{all:unset;cursor:pointer;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;background:var(--paper-raised);}
+  .pr-seg button[aria-pressed="true"]{background:var(--ink);color:#fff;}
+  .pr-note{font-size:12px;color:var(--ink-soft);margin:6px 0 10px;line-height:1.5;}
+  .pr-list{display:flex;flex-direction:column;gap:8px;}
+  .pr-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--paper-raised);border:1px solid var(--line);border-radius:10px;padding:11px 13px;box-shadow:var(--shadow);}
+  .pr-row.me{border-color:var(--gold);box-shadow:inset 4px 0 0 var(--gold),var(--shadow);}
+  .pr-row.top{background:linear-gradient(90deg,var(--win-soft),var(--paper-raised) 60%);}
+  .pr-pos{font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;text-align:center;color:var(--ink-soft);}
+  .pr-row.top .pr-pos{color:var(--win);}
+  .pr-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:15.5px;text-transform:uppercase;line-height:1.15;overflow-wrap:anywhere;}
+  .pr-meta{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+  .pr-bar{margin-top:7px;}
+  .pr-bar .bar-track{height:6px;}
+  .pr-val{text-align:right;}
+  .pr-val .big{font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;line-height:1;}
+  .pr-val .small{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-soft);margin-top:3px;white-space:nowrap;}
+  .pr-chip{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:2px;}
+  .pr-chip.win{background:var(--win-soft);color:var(--win);}
+  .pr-chip.low{background:#FDE8D7;color:#8A3D0A;}
+  .pr-chip.me{background:var(--gold-soft);color:#6B530A;}
+  .pr-calbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;}
+  .pr-calbar label{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);}
+  .pr-calbar select{font:inherit;font-size:14px;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--paper-raised);color:var(--ink);min-width:220px;}
+  .pr-blk{border-top:1px dashed var(--line);padding-top:7px;display:flex;flex-direction:column;gap:5px;}
+  .pr-blk-top{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;}
+  .pr-ptag{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:5px;}
+  .pr-ptag.cafe{background:var(--fmc-soft);color:var(--fmc);}
+  .pr-ptag.cenicero{background:var(--ava-soft);color:var(--ava);}
+  .bar-fill.cafe{background:var(--fmc);}
+  .pr-blk .rank-badge{align-self:flex-start;white-space:normal;font-size:9.5px;}
+  .pr-blk .bar-track{height:5px;}
+  @media (max-width:640px){
+    .pr-row{grid-template-columns:34px minmax(0,1fr) auto;gap:9px;padding:10px;}
+    .pr-pos{font-size:18px;} .pr-val .big{font-size:18px;}
+    .pr-seg button{padding:8px 10px;font-size:10.5px;}
+  }
+
 </style>
 <body>
 
@@ -682,6 +745,7 @@
 </header>
 
 <div class="wrap">
+  <div class="stock-reminder" id="stockReminder" role="status"></div>
 
   <div id="homeView">
     <div class="home-grid">
@@ -748,6 +812,23 @@
         </div>
         <div class="home-card-title">Mi semana: materiales y Conectados</div>
         <div class="home-card-desc">Tu calendario de lunes a sábado: qué tiendas te tocan cada día, qué material implementar en cada una y cómo vas en tu cuota de Conectados.</div>
+      </button>
+      <a class="home-card" href="https://forms.gle/u2U9LZujyeNKzjyP7" target="_blank" rel="noopener">
+        <span class="hc-badge">VIERNES · 4 PM</span>
+        <div class="home-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="home-card-title">Formulario de stock de materiales</div>
+        <div class="home-card-desc">Reporta el stock de materiales de tus tiendas. Se completa todos los viernes antes de las 4 pm.</div>
+      </a>
+
+      <button class="home-card" onclick="showPromos()">
+        <span class="hc-badge">NUEVO</span>
+        <div class="home-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="home-card-title">Avance de promociones actuales</div>
+        <div class="home-card-desc">Combo Pack Lucky Strike + Cenicero: stock por tienda y por promotor, y tu calendario con las tiendas que tienen el combo.</div>
       </button>
     </div>
   </div>
@@ -934,6 +1015,15 @@
     <p class="cal-note">Calendario de noviembre 2026. Quincenal 1 se visita en las semanas 2 y 4; Quincenal 2 en las semanas 1, 3 y 5; Mensual en la semana 1. La cuota de Conectados es la de noviembre y el puesto se actualiza con cada avance.</p>
   </div>
 
+  <div id="promosView" style="display:none;">
+    <button class="back-btn" onclick="showHome()" style="padding-left:0; margin-bottom:14px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" width="12" height="12"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Menú principal
+    </button>
+    <div class="pr-tabs" id="prTabs" role="tablist" aria-label="Promociones"></div>
+    <div id="prBody"></div>
+  </div>
+
   <div class="rules" id="rulesBlockOctubre" style="display:none;">
     <h2><span class="gold">★</span> Premios vigentes — Octubre</h2>
     <div class="rsub">Ganan las tiendas con mayor % incremental de ventas versus su cuota — no es por cuota cumplida, es por ranking.</div>
@@ -1009,7 +1099,6 @@
     <div class="rsub" style="margin-top:12px">Experiencia Big Box (1° puesto), a elegir: estadía en Hotel Casa Hacienda San José (Chincha), estadía en Arte Hotel Lima o cena premium en Restaurante Amor Amar.</div>
   </div>
 
-  <footer>TT AUDIT — Cuotas Conectados KA · Agosto a Noviembre 2026</footer>
 </div>
 
 <script>
@@ -1412,6 +1501,7 @@ const HEADER_TEXT = {
   conectados: { title:'Conectados KA', sub:'Agosto a Noviembre 2026 — consulta tu avance de cuota por tienda, mes a mes.' },
   layouts: { title:'Layout de Cadenas', sub:'Planogramas y layouts de exhibición vigentes por cadena.' },
   anuncios: { title:'Anuncios del mes', sub:'Octubre 2026 — lo que tienes que priorizar en cada cadena.' },
+  promos: { title:'Avance de promociones', sub:'Noviembre 2026 — cómo van las promos en tus tiendas y frente al resto del equipo.' },
   materiales: { title:'Mi semana', sub:'Noviembre 2026 — tus tiendas por día de visita, el material a implementar y tu cuota de Conectados.' },
 };
 function setHeader(key){
@@ -1855,6 +1945,246 @@ function showAnuncios(){
   setHeader('anuncios');
   window.scrollTo({top:0, behavior:'smooth'});
 }
+
+
+// ---------- FORMULARIO DE STOCK + RECORDATORIO VIERNES 4 PM ----------
+const STOCK_FORM_URL = 'https://forms.gle/u2U9LZujyeNKzjyP7';
+// Hora Perú (UTC-5, sin horario de verano)
+function limaNow(){ return new Date(Date.now() - 5*3600*1000); }
+function renderStockReminder(){
+  const el = document.getElementById('stockReminder'); if(!el) return;
+  const t = limaNow(), dow = t.getUTCDay(), h = t.getUTCHours();
+  const force = /[?&]recordatorio=1/.test(location.search);
+  let msg = null, urgent = false;
+  if(dow === 5 && h < 16){ msg = ['Hoy viernes a las 4 pm', 'Completa el formulario de stock de materiales de tus tiendas antes de las 4 pm.']; }
+  else if(dow === 5 || dow === 6){ urgent = true; msg = ['Completa tu stock de materiales', 'Ya pasó la hora del viernes (4 pm). Si todavía no llenaste el formulario de stock, hazlo ahora.']; }
+  else if(force){ msg = ['Hoy viernes a las 4 pm', 'Completa el formulario de stock de materiales de tus tiendas antes de las 4 pm.']; }
+  const ok = !!msg && sessionStorage.getItem('ck_unlocked') === '1';
+  el.className = 'stock-reminder' + (ok ? ' on' : '') + (urgent ? ' urgent' : '');
+  el.innerHTML = ok ? `<span class="sr-ico">${urgent ? '⏰' : '📦'}</span><div class="sr-txt"><b>${msg[0]}</b>${msg[1]}</div><a href="${STOCK_FORM_URL}" target="_blank" rel="noopener">Llenar formulario</a>` : '';
+}
+renderStockReminder();
+setInterval(renderStockReminder, 5*60*1000);
+document.getElementById('gateBtn').addEventListener('click', ()=>setTimeout(renderStockReminder, 0));
+document.getElementById('gatePass').addEventListener('keydown', e=>{ if(e.key==='Enter') setTimeout(renderStockReminder, 0); });
+
+// ---------- AVANCE DE PROMOCIONES ----------
+// Combo LS + Cenicero: stock de combos por tienda (fuente: reportes de stock de cada cadena)
+const CENICERO_STOCK = [{"cadena": "OXXO", "codigo": 682082, "tienda": "SALGUERO", "blue": 20, "red": 10}, {"cadena": "OXXO", "codigo": 643739, "tienda": "UCELLO", "blue": 24, "red": 3}, {"cadena": "OXXO", "codigo": 392766, "tienda": "VIGIL", "blue": 24, "red": 0}, {"cadena": "OXXO", "codigo": 497461, "tienda": "COSTA RICA", "blue": 17, "red": 5}, {"cadena": "OXXO", "codigo": 702485, "tienda": "GLORIA", "blue": 13, "red": 9}, {"cadena": "OXXO", "codigo": 431261, "tienda": "CORDOVA", "blue": 0, "red": 21}, {"cadena": "OXXO", "codigo": 688535, "tienda": "CALDERON", "blue": 21, "red": 0}, {"cadena": "OXXO", "codigo": 594106, "tienda": "MAIPU", "blue": 16, "red": 4}, {"cadena": "OXXO", "codigo": 637562, "tienda": "PUMAC", "blue": 20, "red": 0}, {"cadena": "OXXO", "codigo": 392855, "tienda": "MONTE", "blue": 20, "red": 0}, {"cadena": "OXXO", "codigo": 497251, "tienda": "DELIA", "blue": 19, "red": 0}, {"cadena": "OXXO", "codigo": 633029, "tienda": "SUNSET", "blue": 0, "red": 19}, {"cadena": "OXXO", "codigo": 493888, "tienda": "MARCONA", "blue": 18, "red": 0}, {"cadena": "OXXO", "codigo": 637734, "tienda": "CRONOS", "blue": 11, "red": 6}, {"cadena": "OXXO", "codigo": 626826, "tienda": "CAMPO", "blue": 16, "red": 0}, {"cadena": "OXXO", "codigo": 392713, "tienda": "ALIAGA", "blue": 10, "red": 6}, {"cadena": "OXXO", "codigo": 709500, "tienda": "CARACAS", "blue": 15, "red": 0}, {"cadena": "OXXO", "codigo": 393211, "tienda": "BALLON", "blue": 15, "red": 0}, {"cadena": "OXXO", "codigo": 423035, "tienda": "TALARA", "blue": 9, "red": 5}, {"cadena": "OXXO", "codigo": 439147, "tienda": "LAURELES", "blue": 14, "red": 0}, {"cadena": "OXXO", "codigo": 497418, "tienda": "LUZURIAGA", "blue": 14, "red": 0}, {"cadena": "OXXO", "codigo": 505944, "tienda": "PACIFICO", "blue": 12, "red": 0}, {"cadena": "OXXO", "codigo": 637565, "tienda": "JIMENEZ", "blue": 11, "red": 0}, {"cadena": "OXXO", "codigo": 392702, "tienda": "SAN ROCO", "blue": 0, "red": 10}, {"cadena": "OXXO", "codigo": 454566, "tienda": "CLEMENTE", "blue": 0, "red": 10}, {"cadena": "OXXO", "codigo": 637737, "tienda": "TRUJILLO", "blue": 10, "red": 0}, {"cadena": "OXXO", "codigo": 702493, "tienda": "ANDENES", "blue": 10, "red": 0}, {"cadena": "OXXO", "codigo": 393046, "tienda": "EL POLO", "blue": 0, "red": 10}, {"cadena": "OXXO", "codigo": 637558, "tienda": "NACIONES", "blue": 9, "red": 0}, {"cadena": "OXXO", "codigo": 626310, "tienda": "CIPRESES", "blue": 0, "red": 9}, {"cadena": "OXXO", "codigo": 636721, "tienda": "LAREDO", "blue": 0, "red": 9}, {"cadena": "OXXO", "codigo": 392852, "tienda": "AYACUCHO", "blue": 9, "red": 0}, {"cadena": "OXXO", "codigo": 506250, "tienda": "RAMSEY", "blue": 9, "red": 0}, {"cadena": "OXXO", "codigo": 510216, "tienda": "MARTIN", "blue": 0, "red": 8}, {"cadena": "OXXO", "codigo": 506103, "tienda": "LAVANDA", "blue": 0, "red": 8}, {"cadena": "OXXO", "codigo": 510192, "tienda": "GERTRUDIS", "blue": 7, "red": 0}, {"cadena": "OXXO", "codigo": 626305, "tienda": "SALIRROSAS", "blue": 0, "red": 7}, {"cadena": "OXXO", "codigo": 637731, "tienda": "EMANCIPACIÓN", "blue": 0, "red": 7}, {"cadena": "OXXO", "codigo": 600349, "tienda": "LEGUIA", "blue": 0, "red": 7}, {"cadena": "OXXO", "codigo": 689890, "tienda": "DONATELLO", "blue": 0, "red": 6}, {"cadena": "OXXO", "codigo": 626308, "tienda": "CUZCO", "blue": 0, "red": 6}, {"cadena": "OXXO", "codigo": 421966, "tienda": "NEGOCIOS", "blue": 0, "red": 5}, {"cadena": "OXXO", "codigo": 488556, "tienda": "CORREGIDOR", "blue": 2, "red": 3}, {"cadena": "OXXO", "codigo": 691815, "tienda": "CHICLAYO", "blue": 0, "red": 4}, {"cadena": "OXXO", "codigo": 651931, "tienda": "UNIDOS", "blue": 0, "red": 4}, {"cadena": "OXXO", "codigo": 399820, "tienda": "LAS ARTES", "blue": 3, "red": 0}, {"cadena": "OXXO", "codigo": 437019, "tienda": "Norte", "blue": 0, "red": 2}, {"cadena": "REPSOL", "codigo": 392722, "tienda": "SAIMON", "blue": 25, "red": 12}, {"cadena": "REPSOL", "codigo": 392993, "tienda": "REDUCTO", "blue": 23, "red": 13}, {"cadena": "REPSOL", "codigo": 393182, "tienda": "PRECURSORES", "blue": 35, "red": 0}, {"cadena": "REPSOL", "codigo": 392995, "tienda": "EL ROSEDAL", "blue": 18, "red": 6}, {"cadena": "REPSOL", "codigo": 393138, "tienda": "DOS DE MAYO", "blue": 12, "red": 10}, {"cadena": "REPSOL", "codigo": 392795, "tienda": "PARQUE MORA", "blue": 19, "red": 0}, {"cadena": "REPSOL", "codigo": 393282, "tienda": "ANGAMOS", "blue": 13, "red": 6}, {"cadena": "REPSOL", "codigo": 421971, "tienda": "EL AVION", "blue": 10, "red": 8}, {"cadena": "REPSOL", "codigo": 392996, "tienda": "MIRAFLORES", "blue": 17, "red": 0}, {"cadena": "REPSOL", "codigo": 393014, "tienda": "BOLIVAR 2", "blue": 9, "red": 7}, {"cadena": "REPSOL", "codigo": 392798, "tienda": "SANTA MARIA", "blue": 9, "red": 7}, {"cadena": "REPSOL", "codigo": 393215, "tienda": "TIKI TOO", "blue": 9, "red": 6}, {"cadena": "REPSOL", "codigo": 393317, "tienda": "EL PARQUE", "blue": 13, "red": 2}, {"cadena": "REPSOL", "codigo": 393048, "tienda": "EL DERBY", "blue": 13, "red": 0}, {"cadena": "REPSOL", "codigo": 392724, "tienda": "LA ROTONDA", "blue": 6, "red": 7}, {"cadena": "REPSOL", "codigo": 392767, "tienda": "CENTENARIO", "blue": 11, "red": 0}, {"cadena": "REPSOL", "codigo": 393113, "tienda": "AREQUIPA", "blue": 10, "red": 0}, {"cadena": "REPSOL", "codigo": 392728, "tienda": "EL SAUCE", "blue": 10, "red": 0}, {"cadena": "REPSOL", "codigo": 393058, "tienda": "TRONCO FIRME", "blue": 9, "red": 0}, {"cadena": "REPSOL", "codigo": 392749, "tienda": "FAUCETT", "blue": 1, "red": 7}, {"cadena": "REPSOL", "codigo": 392971, "tienda": "SAN CARLOS", "blue": 8, "red": 0}, {"cadena": "REPSOL", "codigo": 426530, "tienda": "LEBAR", "blue": 0, "red": 8}, {"cadena": "REPSOL", "codigo": 431247, "tienda": "PARQUE SUR", "blue": 0, "red": 7}, {"cadena": "REPSOL", "codigo": 392755, "tienda": "LA MARINA 2", "blue": 0, "red": 7}, {"cadena": "REPSOL", "codigo": 393112, "tienda": "TENAUD", "blue": 0, "red": 4}, {"cadena": "REPSOL", "codigo": 392833, "tienda": "SAN BORJA", "blue": 0, "red": 4}, {"cadena": "REPSOL", "codigo": 392811, "tienda": "GRAU 2", "blue": 4, "red": 0}, {"cadena": "REPSOL", "codigo": 393325, "tienda": "PRINCIPAL", "blue": 0, "red": 2}, {"cadena": "REPSOL", "codigo": 393059, "tienda": "CEBOTTO", "blue": 2, "red": 0}];
+const PROMO_CORTES = { ceniceroOXXO:'16/11', ceniceroREPSOL:'12/11' };
+
+const CAL_BY_COD = {}; CAL_STORES.forEach(s=>{ CAL_BY_COD[s.codigo] = s; });
+function prStore(codigo){ return CAL_BY_COD[codigo] || null; }
+
+const PROMOS = {
+  cenicero: {
+    id:'cenicero', tab:'Combo LS + Cenicero', sub:'OXXO · Repsol', tipo:'stock',
+    titulo:'Combo Pack Lucky Strike + Cenicero',
+    texto:'Lucky Strike 20s + cenicero a S/ 16.50 (precio sugerido). Mientras la tienda tenga combos, el pack tiene que estar visible y ofrecerse en caja. Aquí ves cuántos combos quedan en cada tienda para que priorices dónde empujar la venta.',
+    rows: CENICERO_STOCK.map(c=>{
+      const s = prStore(c.codigo);
+      return { codigo:c.codigo, cadena:c.cadena, tienda:c.tienda, distrito:s?s.distrito:'', promotor:s?s.promotor:'SIN PROMOTOR', blue:c.blue, red:c.red, stock:c.blue+c.red };
+    })
+  }
+};
+const PR_BY_COD = {}; // codigo -> {cafe:row, cenicero:row}
+Object.values(PROMOS).forEach(p=>p.rows.forEach(r=>{ (PR_BY_COD[r.codigo] = PR_BY_COD[r.codigo] || {})[p.id] = r; }));
+
+const prState = { tab:'cenicero', view:'promotores', name:null, week:0, day:0 };
+const PR_WIN = 5;
+function prMe(){ return sessionStorage.getItem('ck_promotor') || ''; }
+function prPct(x){ return Math.max(0, Math.min(999, Math.round((x||0)*100))); }
+
+function showPromos(){
+  ['homeView','conectadosHome','detailView','rulesBlockOctubre','rulesBlockNoviembre','layoutsView','materialesHome','materialesDetailView','anunciosView'].forEach(id=>{
+    const el = document.getElementById(id); if(el) el.style.display = 'none';
+  });
+  document.getElementById('promosView').style.display = 'block';
+  setHeader('promos');
+  if(!prState.name){ const me = prMe(); prState.name = (me && materialesPromoterMap[me]) ? me : null; }
+  prState.week = calCurWeek(); prState.day = calCurDay();
+  if(prState.week === 4 && prState.day > 0) prState.day = 0;
+  renderPromos();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function prPickTab(t){ prState.tab = t; if(t!=='cal' && prState.view==='cal') prState.view='promotores'; renderPromos(); }
+function prPickView(v){ prState.view = v; renderPromos(); }
+
+function renderPromos(){
+  document.body.classList.toggle('cal-wide', prState.tab === 'cal');
+  const tabs = [
+    ['cenicero', PROMOS.cenicero.tab, PROMOS.cenicero.sub],
+    ['cal', '📅 Mi calendario', 'Combo por tienda']
+  ];
+  document.getElementById('prTabs').innerHTML = tabs.map(t=>`<button class="pr-tab" role="tab" aria-selected="${prState.tab===t[0]}" onclick="prPickTab('${t[0]}')">${t[1]}<span class="pt-sub">${t[2]}</span></button>`).join('');
+  const body = document.getElementById('prBody');
+  if(prState.tab === 'cal'){ body.innerHTML = prCalShell(); renderPrCal(); return; }
+  const p = PROMOS[prState.tab];
+  body.innerHTML = prHead(p) +
+    `<div class="pr-seg" role="group"><button aria-pressed="${prState.view==='promotores'}" onclick="prPickView('promotores')">Ranking promotores</button><button aria-pressed="${prState.view==='tiendas'}" onclick="prPickView('tiendas')">Ranking tiendas</button></div>` +
+    (prState.view==='promotores' ? prRankPromotores(p) : prRankTiendas(p));
+}
+
+function prHead(p){
+  let facts;
+  if(p.tipo === 'cuota'){
+    const c = p.rows.reduce((a,r)=>a+r.cuota,0), v = p.rows.reduce((a,r)=>a+r.avance,0);
+    facts = [['Corte', PROMO_CORTES.cafe], ['Tiendas', p.rows.length], ['Avance total', fmtNum(v)+' / '+fmtNum(c)], ['Alcance', prPct(c? v/c : 0)+'%'], ['Ganadoras', 'Top '+PR_WIN]];
+  } else {
+    const ox = p.rows.filter(r=>r.cadena==='OXXO'), re = p.rows.filter(r=>r.cadena==='REPSOL');
+    const sum = a=>a.reduce((x,r)=>x+r.stock,0);
+    facts = [['Stock OXXO al '+PROMO_CORTES.ceniceroOXXO, sum(ox)+' combos · '+ox.length+' tiendas'], ['Stock Repsol al '+PROMO_CORTES.ceniceroREPSOL, sum(re)+' combos · '+re.length+' EES'], ['Precio sugerido','S/ 16.50']];
+  }
+  return `<section class="pr-head"><h2>${anEsc(p.titulo)}</h2><p>${anEsc(p.texto)}</p><div class="pr-facts">${facts.map(f=>`<div class="pr-fact"><div class="k">${anEsc(f[0])}</div><div class="v">${anEsc(String(f[1]))}</div></div>`).join('')}</div></section>`;
+}
+
+function prGroup(p){
+  const g = {};
+  p.rows.forEach(r=>{
+    if(!r.promotor || r.promotor==='SIN PROMOTOR') return;
+    const x = g[r.promotor] = g[r.promotor] || { name:r.promotor, rows:[], cuota:0, avance:0, stock:0, win:0 };
+    x.rows.push(r); x.cuota += r.cuota||0; x.avance += r.avance||0; x.stock += r.stock||0;
+    if(p.tipo==='cuota' && r.rank <= PR_WIN && r.pct > 0) x.win++;
+  });
+  return Object.values(g);
+}
+
+function prRankPromotores(p){
+  const me = prMe();
+  const L = prGroup(p);
+  if(p.tipo === 'cuota'){
+    L.forEach(x=>x.pct = x.cuota ? x.avance/x.cuota : 0);
+    L.sort((a,b)=>(b.pct-a.pct)||(b.avance-a.avance));
+    return `<p class="pr-note">Ordenado por % de alcance de todas tus tiendas juntas (avance ÷ cuota). “En premio” = tiendas tuyas dentro del top ${PR_WIN} del ranking de tiendas. Corte al ${PROMO_CORTES.cafe}.</p><div class="pr-list">` +
+      L.map((x,i)=>{
+        const pct = prPct(x.pct);
+        return `<div class="pr-row${x.name===me?' me':''}${x.win?' top':''}">
+          <div class="pr-pos">${i+1}</div>
+          <div><div class="pr-name">${anEsc(x.name)}${x.name===me?'<span class="pr-chip me">Tú</span>':''}${x.win?`<span class="pr-chip win">🏆 ${x.win} en premio</span>`:''}</div>
+            <div class="pr-meta">${x.rows.length} tienda${x.rows.length===1?'':'s'} · ${x.rows.filter(r=>r.avance>0).length} con avance</div>
+            <div class="pr-bar"><div class="bar-track"><div class="bar-fill fmc" style="width:${Math.min(100,pct)}%"></div></div></div></div>
+          <div class="pr-val"><div class="big">${pct}%</div><div class="small">${fmtNum(x.avance)} / ${fmtNum(x.cuota)}</div></div>
+        </div>`;
+      }).join('') + '</div>';
+  }
+  L.sort((a,b)=>b.stock-a.stock);
+  const max = Math.max(1, ...L.map(x=>x.stock));
+  return `<p class="pr-note">Combos en stock en tus tiendas (OXXO al ${PROMO_CORTES.ceniceroOXXO}, Repsol al ${PROMO_CORTES.ceniceroREPSOL}). Más stock = más combos por vender: ahí está tu prioridad de venta.</p><div class="pr-list">` +
+    L.map((x,i)=>`<div class="pr-row${x.name===me?' me':''}">
+      <div class="pr-pos">${i+1}</div>
+      <div><div class="pr-name">${anEsc(x.name)}${x.name===me?'<span class="pr-chip me">Tú</span>':''}</div>
+        <div class="pr-meta">${x.rows.length} tienda${x.rows.length===1?'':'s'} con combo · ${[...new Set(x.rows.map(r=>r.cadena))].join(' · ')}</div>
+        <div class="pr-bar"><div class="bar-track"><div class="bar-fill" style="background:var(--ava);width:${Math.round(x.stock/max*100)}%"></div></div></div></div>
+      <div class="pr-val"><div class="big">${x.stock}</div><div class="small">combos</div></div>
+    </div>`).join('') + '</div>';
+}
+
+function prRankTiendas(p){
+  const me = prMe();
+  if(p.tipo === 'cuota'){
+    const L = p.rows;
+    return `<p class="pr-note">Ranking de la promo: % de avance de ventas versus la cuota de cada tienda. Las ${PR_WIN} primeras con avance están en premio. Corte al ${PROMO_CORTES.cafe}.</p><div class="pr-list">` +
+      L.map(r=>{
+        const pct = prPct(r.pct), top = r.rank <= PR_WIN && r.pct > 0;
+        return `<div class="pr-row${r.promotor===me?' me':''}${top?' top':''}">
+          <div class="pr-pos">${r.rank}</div>
+          <div><div class="pr-name">OXXO - ${anEsc(r.tienda)}${top?'<span class="pr-chip win">🏆 En premio</span>':''}</div>
+            <div class="pr-meta">${anEsc(r.distrito)} · ${anEsc(r.promotor)}</div>
+            <div class="pr-bar"><div class="bar-track"><div class="bar-fill fmc" style="width:${Math.min(100,pct)}%"></div></div></div></div>
+          <div class="pr-val"><div class="big">${pct}%</div><div class="small">${fmtNum(r.avance)} / ${fmtNum(r.cuota)}</div></div>
+        </div>`;
+      }).join('') + '</div>';
+  }
+  const L = [...p.rows].sort((a,b)=>b.stock-a.stock);
+  return `<p class="pr-note">Tiendas con combos en stock, de más a menos. “Stock bajo” = 5 combos o menos: avisa si la tienda necesita reposición.</p><div class="pr-list">` +
+    L.map((r,i)=>`<div class="pr-row${r.promotor===me?' me':''}">
+      <div class="pr-pos">${i+1}</div>
+      <div><div class="pr-name">${anEsc(r.cadena)} - ${anEsc(r.tienda)}${r.stock<=5?'<span class="pr-chip low">Stock bajo</span>':''}</div>
+        <div class="pr-meta">${anEsc(r.distrito)} · ${anEsc(r.promotor)} · Blue ${r.blue} · Red ${r.red}</div></div>
+      <div class="pr-val"><div class="big">${r.stock}</div><div class="small">combos</div></div>
+    </div>`).join('') + '</div>';
+}
+
+function prCafeBadge(r){
+  const N = PROMOS.cafe.rows.length;
+  if(!r.pct) return `<span class="rank-badge off">Sin avance aún</span>`;
+  if(r.rank <= PR_WIN) return `<span class="rank-badge win">🏆 #${r.rank} de ${N} — dentro de premio</span>`;
+  if(r.rank <= PR_WIN+5) return `<span class="rank-badge close">#${r.rank} de ${N} — cerca del premio</span>`;
+  return `<span class="rank-badge off">#${r.rank} de ${N}</span>`;
+}
+// ----- calendario de promociones (misma lógica de semanas y frecuencias que "Mi semana") -----
+function prPromoterNames(){
+  return materialesPromoterNames.filter(n => (materialesPromoterMap[n]||[]).some(s=>PR_BY_COD[s.codigo]));
+}
+function prCalShell(){
+  const names = prPromoterNames();
+  if(!prState.name || !names.includes(prState.name)) prState.name = names.includes(prMe()) ? prMe() : (prState.name && materialesPromoterMap[prState.name] ? prState.name : names[0]);
+  const opts = names.map(n=>`<option${n===prState.name?' selected':''}>${anEsc(n)}</option>`).join('');
+  const meNoPromo = prMe() && !names.includes(prMe());
+  return `<div class="detail-header" style="margin-top:0">
+      <div class="pr-calbar"><label for="prCalSel">Promotor</label><select id="prCalSel" onchange="prState.name=this.value;renderPrCal()">${opts}</select></div>
+      ${meNoPromo ? `<p class="pr-note">Tus tiendas no tienen promociones activas este mes. Puedes ver el calendario de otro promotor.</p>` : ''}
+      <div class="detail-summary" id="prCalSummary"></div>
+      <div class="cal-weeks" id="prCalWeeks"></div>
+    </div>
+    <div class="cal-daytabs" id="prCalDayTabs"></div>
+    <div class="cal" id="prCalGrid"></div>
+    <p class="cal-note">Solo se muestran tus tiendas con promociones activas, en su día de visita. Quincenal 1: semanas 2 y 4 · Quincenal 2: semanas 1, 3 y 5 · Mensual: semana 1. Stock de combos OXXO al ${PROMO_CORTES.ceniceroOXXO} y Repsol al ${PROMO_CORTES.ceniceroREPSOL}.</p>`;
+}
+function prCalCard(s){
+  const pr = PR_BY_COD[s.codigo] || {};
+  let blocks = '';
+  if(pr.cafe){
+    const r = pr.cafe, pct = prPct(r.pct);
+    blocks += `<div class="pr-blk"><div class="pr-blk-top"><span class="pr-ptag cafe">Promo LS + Café</span><span class="cal-cx-num"><b>${fmtNum(r.avance)}</b> / ${fmtNum(r.cuota)} · <b>${pct}%</b></span></div>
+      <div class="bar-track"><div class="bar-fill fmc" style="width:${Math.min(100,pct)}%"></div></div>${prCafeBadge(r)}</div>`;
+  }
+  if(pr.cenicero){
+    const r = pr.cenicero;
+    blocks += `<div class="pr-blk"><div class="pr-blk-top"><span class="pr-ptag cenicero">Combo Cenicero</span><span class="cal-cx-num"><b>${r.stock}</b> en stock</span></div>
+      <div class="cal-cx-num">Blue ${r.blue} · Red ${r.red}</div>${r.stock<=5?'<span class="rank-badge close">Stock bajo · revisa reposición</span>':''}</div>`;
+  }
+  return `<article class="cal-store">
+    <div><div class="cal-sname">${anEsc(s.cadena)} - ${anEsc(s.tienda)}</div><div class="cal-sloc">${anEsc(s.distrito||'')}</div></div>
+    <div class="cal-tags"><span class="chain-dot ${s.cadena.toLowerCase()}">${anEsc(s.cadena)}</span><span class="fchip ${s.f}">${CAL_FLABEL[s.f]}</span></div>
+    ${blocks}
+  </article>`;
+}
+function renderPrCal(){
+  const L = (materialesPromoterMap[prState.name]||[]).filter(s=>PR_BY_COD[s.codigo]);
+  const W = CAL_WEEKS[prState.week];
+  const cols = CAL_DAYS.map((_,d)=>{
+    const date = calAddDays(W.start, d);
+    const inMonth = date.getMonth() === CAL_MONTH;
+    const list = inMonth ? L.filter(r=>r.day===d && calVisits(r.f, W.n)).sort((a,b)=>(CAL_CHAIN_IDX(a.cadena)-CAL_CHAIN_IDX(b.cadena)) || a.tienda.localeCompare(b.tienda,'es')) : [];
+    return { d, date, inMonth, list, isToday: date.getTime() === calToday.getTime() };
+  });
+    const sinDia = L.filter(s=>s.day<0);
+  document.getElementById('prCalSummary').innerHTML = `
+    <div class="dsum"><b>${L.length}</b><span>Tiendas con combo</span></div>
+    <div class="dsum"><b>${cols.reduce((a,c)=>a+c.list.length,0)}</b><span>Visitas sem. ${W.n}</span></div>`;
+  document.getElementById('prCalWeeks').innerHTML = CAL_WEEKS.map((w,i)=>{
+    const end = calAddDays(w.start,5);
+    const isNow = calToday >= w.start && calToday <= calAddDays(w.start,6);
+    const rango = i===4 ? calFmt(w.start) : w.start.getDate()+'–'+calFmt(end);
+    return `<button class="cal-wk" aria-pressed="${i===prState.week}" onclick="prState.week=${i};if(${i}===4)prState.day=0;renderPrCal()"><span class="t">Sem ${w.n}</span><span class="d">${rango}</span>${isNow?'<span class="now">ESTA SEMANA</span>':''}</button>`;
+  }).join('');
+  document.getElementById('prCalDayTabs').innerHTML = cols.map(c=>
+    `<button class="cal-dt${c.isToday?' today':''}" aria-pressed="${c.d===prState.day}" onclick="prState.day=${c.d};renderPrCal()"><span class="a">${CAL_DSHORT[c.d]}</span><span class="b">${c.inMonth ? calFmt(c.date) : '—'}</span>${c.inMonth ? `<span class="c">${c.list.length} PDV</span>` : ''}</button>`
+  ).join('');
+  document.getElementById('prCalGrid').innerHTML = cols.map(c=>`
+    <div class="cal-col${c.isToday?' today':''}${c.d===prState.day?' sel':''}${c.inMonth?'':' off'}">
+      <div class="cal-colh"><span><span class="dn">${CAL_DLABEL[c.d]}</span> <span class="dd">${calFmt(c.date)}</span></span><span class="n">${c.inMonth ? c.list.length : ''}</span></div>
+      ${!c.inMonth ? `<div class="cal-empty">Diciembre</div>` : c.list.length ? c.list.map(prCalCard).join('') : `<div class="cal-empty">Sin tiendas con promo este día</div>`}
+    </div>`).join('') +
+    (sinDia.length ? `<div class="cal-col sel" style="grid-column:1/-1"><div class="cal-empty" style="text-align:left">Sin día de visita en el padrón: ${sinDia.map(s=>anEsc(s.cadena+' - '+s.tienda)).join(', ')}</div></div>` : '');
+}
+
+// Ocultar la vista de promociones al navegar a cualquier otra sección
+['showHome','showLayouts','showConectados','openPromoter','showMaterialesHome','openMaterialesPromoter','showAnuncios','logout'].forEach(fn=>{
+  const orig = window[fn]; if(typeof orig !== 'function') return;
+  window[fn] = function(){ const pv = document.getElementById('promosView'); if(pv) pv.style.display = 'none'; const r = orig.apply(this, arguments); renderStockReminder(); return r; };
+});
 
 // ---------- restore session ----------
 if(sessionStorage.getItem('ck_unlocked') === '1'){
